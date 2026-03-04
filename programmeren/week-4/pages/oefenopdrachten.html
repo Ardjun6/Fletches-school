@@ -73,6 +73,28 @@
                 </div>
             </section>
 
+            
+            <section class="content-section">
+                <h2>Quiz & Open vragen (Makkelijk / Normaal / Moeilijk)</h2>
+                <div class="exercise-card"><div class="exercise-header"><div class="exercise-number">Q1</div><h3 class="exercise-title">Quiz (Makkelijk)</h3><span class="exercise-difficulty difficulty-easy">Makkelijk</span></div><p>Wat is Big-O notatie? <strong>Antwoord:</strong> Een maat voor de groei van tijd- of geheugengebruik bij grotere input.</p></div>
+                <div class="exercise-card"><div class="exercise-header"><div class="exercise-number">Q2</div><h3 class="exercise-title">Open vraag (Normaal)</h3><span class="exercise-difficulty difficulty-medium">Normaal</span></div><pre><code>def lineaire_zoektocht(lijst, doel):
+    for i, item in enumerate(lijst):
+        if item == doel:
+            return i
+    return -1</code></pre></div>
+                <div class="exercise-card"><div class="exercise-header"><div class="exercise-number">Q3</div><h3 class="exercise-title">Open vraag (Moeilijk)</h3><span class="exercise-difficulty difficulty-hard">Moeilijk</span></div><pre><code>def binary_search(arr, target):
+    low, high = 0, len(arr)-1
+    while low <= high:
+        mid = (low + high) // 2
+        if arr[mid] == target:
+            return mid
+        if arr[mid] < target:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return -1</code></pre></div>
+            </section>
+
             <nav class="lesson-nav">
                 <a href="../index.html" class="nav-btn">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>

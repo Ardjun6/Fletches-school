@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="nl" data-course="data">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Oefenopdrachten | Data II Week 2</title><link rel="stylesheet" href="../../../css/style.css"></head>
+<body>
+<main class="main-content">
+<header class="top-bar"><div class="breadcrumb"><a href="../../index.html" style="color:var(--text-muted);text-decoration:none">Data II</a><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg><a href="../index.html" style="color:var(--text-muted);text-decoration:none">Week 2</a><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg><span>Oefenopdrachten</span></div></header>
+<div class="lesson-header"><h1 class="lesson-page-title">Quiz & Open vragen</h1><p class="lesson-page-desc">Alles in drie niveaus: makkelijk, normaal en moeilijk.</p></div>
+<div class="lesson-content-area">
+<div class="exercise-card"><div class="exercise-header"><div class="exercise-number">1</div><h3 class="exercise-title">Quiz (Makkelijk)</h3><span class="exercise-difficulty difficulty-easy">Makkelijk</span></div><ol><li>Welke clause gebruik je om te filteren? <strong>Antwoord: WHERE</strong></li><li>Welke clause gebruik je om te sorteren? <strong>Antwoord: ORDER BY</strong></li></ol></div>
+<div class="exercise-card"><div class="exercise-header"><div class="exercise-number">2</div><h3 class="exercise-title">Open vraag (Normaal)</h3><span class="exercise-difficulty difficulty-medium">Normaal</span></div><p>Geef alle klanten uit België of Nederland waarvan email niet leeg is.</p><pre><code>SELECT klant_id, naam, land, email
+FROM klanten
+WHERE land IN ('België', 'Nederland')
+  AND email IS NOT NULL;</code></pre></div>
+<div class="exercise-card"><div class="exercise-header"><div class="exercise-number">3</div><h3 class="exercise-title">Open vraag (Moeilijk)</h3><span class="exercise-difficulty difficulty-hard">Moeilijk</span></div><p>Selecteer productnaam en omzet uit de tabel <code>verkopen</code>, begin met de hoogste omzet en toon alleen producten met omzet boven 1000.</p><pre><code>SELECT productnaam, omzet
+FROM verkopen
+WHERE omzet &gt; 1000
+ORDER BY omzet DESC;</code></pre></div>
+<div class="exercise-card"><div class="exercise-header"><div class="exercise-number">4</div><h3 class="exercise-title">Quiz (Moeilijk)</h3><span class="exercise-difficulty difficulty-hard">Moeilijk</span></div><p>Welke query toont categorieën met een gemiddelde prijs groter dan 50?</p><pre><code>SELECT categorie, AVG(prijs) AS gem_prijs
+FROM producten
+GROUP BY categorie
+HAVING AVG(prijs) &gt; 50;</code></pre></div>
+<nav class="lesson-nav"><a href="samenvatting.html" class="nav-btn"><div><span class="nav-label">Vorige</span><span class="nav-title">← Samenvatting</span></div></a><a href="praktijkopdrachten.html" class="nav-btn"><div><span class="nav-label">Volgende</span><span class="nav-title">Praktijkopdrachten →</span></div></a></nav>
+</div><footer class="footer"><p>Data II - ADSAI &copy; 2025</p></footer></main><script src="../../../js/main.js"></script></body></html>
