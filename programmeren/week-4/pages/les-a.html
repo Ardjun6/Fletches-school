@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="nl" data-course="programmeren">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KNN Algoritme &amp; Accuracy | Week 4 | Fletches</title>
+    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-left">
+            <a href="../index.html" class="nav-back">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                Week 4
+            </a>
+            <a href="../../../index.html" class="nav-logo">
+                <span class="nav-logo-icon">F</span>
+                <span class="nav-logo-text">Fletches</span>
+            </a>
+        </div>
+        <div class="nav-right">
+            <a href="../../index.html" class="nav-course-btn active">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                Programmeren
+            </a>
+            <a href="../../../data/index.html" class="nav-course-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+                Data
+            </a>
+            <div class="theme-toggle">
+                <button data-theme="dark" title="Dark">🌙</button>
+                <button data-theme="light" title="Light">☀️</button>
+                <button data-theme="amp" title="AMP">⚡</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <header class="top-bar">
+            <div class="breadcrumb">
+                <a href="../index.html" style="color:var(--neutral-400);text-decoration:none">Week 4</a>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                <span>KNN Algoritme &amp; Accuracy</span>
+            </div>
+        </header>
+
+        <div class="lesson-header">
+            <div class="lesson-meta">
+                <span class="lesson-badge">Les A</span>
+                <span class="lesson-badge">Week 4</span>
+            </div>
+            <h1 class="lesson-page-title">KNN Algoritme &amp; Accuracy</h1>
+        </div>
+
+        <div class="lesson-content-area">
+
+            <section class="content-section">
+                <h2>Wat is KNN?</h2>
+                <p>K-Nearest Neighbors (KNN) is een classificatie-algoritme dat een voorspelling maakt voor een nieuw datapunt op basis van de <strong>k dichtstbijzijnde datapunten</strong>.</p>
+
+<div class="image-container" style="cursor:default; background: var(--bg-raised); padding: 1.5rem; text-align: center;">
+    
+<svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg" style="max-width:480px; width:100%;">
+    <style>
+        text { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .label { font-size: 11px; font-weight: 600; }
+        .small { font-size: 10px; }
+    </style>
+    <!-- Axes -->
+    <line x1="60" y1="340" x2="460" y2="340" stroke="var(--text-ghost)" stroke-width="1.5"/>
+    <line x1="60" y1="340" x2="60" y2="30" stroke="var(--text-ghost)" stroke-width="1.5"/>
+    <text x="260" y="375" text-anchor="middle" fill="var(--text-muted)" class="small">Feature 1</text>
+    <text x="25" y="185" text-anchor="middle" fill="var(--text-muted)" class="small" transform="rotate(-90 25 185)">Feature 2</text>
+    <!-- Class A points (blue) -->
+    <circle cx="150" cy="120" r="10" fill="var(--info)" opacity="0.8"/><circle cx="180" cy="160" r="10" fill="var(--info)" opacity="0.8"/>
+    <circle cx="120" cy="180" r="10" fill="var(--info)" opacity="0.8"/><circle cx="200" cy="100" r="10" fill="var(--info)" opacity="0.8"/>
+    <circle cx="160" cy="200" r="10" fill="var(--info)" opacity="0.8"/><circle cx="140" cy="140" r="10" fill="var(--info)" opacity="0.8"/>
+    <!-- Class B points (green) -->
+    <circle cx="340" cy="260" r="10" fill="var(--success)" opacity="0.8"/><circle cx="380" cy="280" r="10" fill="var(--success)" opacity="0.8"/>
+    <circle cx="360" cy="300" r="10" fill="var(--success)" opacity="0.8"/><circle cx="320" cy="290" r="10" fill="var(--success)" opacity="0.8"/>
+    <circle cx="400" cy="250" r="10" fill="var(--success)" opacity="0.8"/><circle cx="350" cy="230" r="10" fill="var(--success)" opacity="0.8"/>
+    <!-- New point -->
+    <circle cx="260" cy="210" r="14" fill="none" stroke="var(--error)" stroke-width="2.5"/>
+    <text x="260" y="215" text-anchor="middle" fill="var(--error)" font-size="16" font-weight="700">?</text>
+    <!-- K=3 circle -->
+    <circle cx="260" cy="210" r="85" fill="none" stroke="var(--warning)" stroke-width="1.5" stroke-dasharray="6,3"/>
+    <text x="348" y="148" fill="var(--warning)" class="label">K=3</text>
+    <!-- Dashed lines to nearest -->
+    <line x1="260" y1="210" x2="200" y2="100" stroke="var(--text-ghost)" stroke-width="1" stroke-dasharray="3,3" opacity="0.4"/>
+    <line x1="260" y1="210" x2="160" y2="200" stroke="var(--info)" stroke-width="1" stroke-dasharray="3,3"/>
+    <line x1="260" y1="210" x2="180" y2="160" stroke="var(--info)" stroke-width="1" stroke-dasharray="3,3"/>
+    <line x1="260" y1="210" x2="350" y2="230" stroke="var(--success)" stroke-width="1" stroke-dasharray="3,3"/>
+    <!-- Legend -->
+    <circle cx="90" cy="30" r="7" fill="var(--info)"/><text x="105" y="35" fill="var(--text-secondary)" class="small">Klasse A</text>
+    <circle cx="190" cy="30" r="7" fill="var(--success)"/><text x="205" y="35" fill="var(--text-secondary)" class="small">Klasse B</text>
+    <circle cx="290" cy="30" r="9" fill="none" stroke="var(--error)" stroke-width="2"/><text x="305" y="35" fill="var(--text-secondary)" class="small">Nieuw punt</text>
+</svg>
+
+    <div class="image-caption">K-Nearest Neighbors: het nieuwe punt (?) wordt geclassificeerd op basis van de K dichtstbijzijnde buren</div>
+</div>
+                <p>Voorbeeld: Classificeer een nieuwe hond als Labradoodle of Dalmatiër op basis van snelheid en lengte.</p>
+            </section>
+            <section class="content-section">
+                <h2>Euclidische Afstand</h2>
+                <p>Om de afstand tussen datapunten te berekenen gebruiken we de Euclidische afstand — de "rechte lijn" afstand in een n-dimensionale ruimte.</p>
+                <p>Manhattan distance berekent afstand langs de assen (als door een stratenraster).</p>
+            </section>
+            <section class="content-section">
+                <h2>Accuracy</h2>
+                <p><strong>Definitie:</strong> Het percentage correct voorspelde datapunten.</p>
+                <p><strong>Wanneer misleidend?</strong> Bij een ongebalanceerde dataset: Als 95% tot één klasse behoort, kan een model dat altijd die klasse voorspelt 95% accuracy halen. Voorbeelden: fraudebestrijding, zeldzame ziekten.</p>
+            </section>
+            <section class="content-section">
+                <h2>Confusion Matrix</h2>
+                <div class="code-block">
+                    <div class="code-header"><span>Voorbeeld: Spam Detection</span></div>
+                    <pre><code>                  Predicted
+                  Spam    Non-Spam
+Actual Spam       0        400
+       Non-Spam   0       9600
+
+Accuracy = 9600/10000 = 96%
+Maar: geen enkele spam correct gedetecteerd!</code></pre>
+                </div>
+            </section>
+
+            <nav class="lesson-nav">
+                <a href="../index.html" class="nav-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    <div><span class="nav-label">Terug naar</span><span class="nav-title">Overzicht</span></div>
+                </a>
+                <a href="les-b.html" class="nav-btn">
+                    <div><span class="nav-label">Volgende</span><span class="nav-title">Les B</span></div>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
+            </nav>
+        </div>
+
+        <footer class="footer"><p>Programmeren II - ADSAI &copy; 2025</p></footer>
+
+<div class="image-container" style="cursor:default; background: var(--bg-raised); padding: 1.5rem; text-align: center;">
+    <svg viewBox="0 0 500 380" xmlns="http://www.w3.org/2000/svg" style="max-width:460px; width:100%;">
+    <style>
+        text { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .title { font-size: 13px; font-weight: 700; }
+        .label { font-size: 11px; font-weight: 600; }
+        .small { font-size: 10px; }
+        .big { font-size: 28px; font-weight: 800; }
+    </style>
+    <text x="250" y="25" text-anchor="middle" fill="var(--text-primary)" class="title">Confusion Matrix — Spam Detectie</text>
+    <text x="250" y="55" text-anchor="middle" fill="var(--text-muted)" class="label">Voorspeld</text>
+    <text x="210" y="80" text-anchor="middle" fill="var(--text-muted)" class="small">Geen Spam</text>
+    <text x="350" y="80" text-anchor="middle" fill="var(--text-muted)" class="small">Spam</text>
+    <text x="55" y="155" text-anchor="middle" fill="var(--text-muted)" class="small" transform="rotate(-90 55 155)">Werkelijk</text>
+    <text x="105" y="140" text-anchor="middle" fill="var(--text-muted)" class="small">Geen</text>
+    <text x="105" y="155" text-anchor="middle" fill="var(--text-muted)" class="small">Spam</text>
+    <text x="105" y="230" text-anchor="middle" fill="var(--text-muted)" class="small">Spam</text>
+    <rect x="140" y="95" width="130" height="80" rx="10" fill="rgba(0,245,160,0.1)" stroke="var(--success)" stroke-width="1.5"/>
+    <text x="205" y="140" text-anchor="middle" fill="var(--success)" class="big">960</text>
+    <text x="205" y="162" text-anchor="middle" fill="var(--success)" class="small">True Negative</text>
+    <rect x="280" y="95" width="130" height="80" rx="10" fill="rgba(255,0,110,0.08)" stroke="var(--error)" stroke-width="1"/>
+    <text x="345" y="140" text-anchor="middle" fill="var(--error)" class="big">0</text>
+    <text x="345" y="162" text-anchor="middle" fill="var(--error)" class="small">False Positive</text>
+    <rect x="140" y="185" width="130" height="80" rx="10" fill="rgba(255,0,110,0.08)" stroke="var(--error)" stroke-width="1"/>
+    <text x="205" y="230" text-anchor="middle" fill="var(--error)" class="big">40</text>
+    <text x="205" y="252" text-anchor="middle" fill="var(--error)" class="small">False Negative</text>
+    <rect x="280" y="185" width="130" height="80" rx="10" fill="rgba(0,245,160,0.1)" stroke="var(--success)" stroke-width="1.5"/>
+    <text x="345" y="230" text-anchor="middle" fill="var(--success)" class="big">0</text>
+    <text x="345" y="252" text-anchor="middle" fill="var(--success)" class="small">True Positive</text>
+    <rect x="100" y="290" width="300" height="60" rx="10" fill="var(--bg-raised)" stroke="var(--warning)" stroke-width="1.5"/>
+    <text x="250" y="315" text-anchor="middle" fill="var(--warning)" class="label">Accuracy = 96% maar 0 spam gedetecteerd!</text>
+    <text x="250" y="338" text-anchor="middle" fill="var(--text-muted)" class="small">Accuracy kan misleidend zijn bij ongebalanceerde data</text>
+</svg>
+    <div class="image-caption">Confusion Matrix: 96% accuracy maar het model vangt geen enkele spam op</div>
+</div>
+    </main>
+    <script src="../../../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="nl" data-course="programmeren">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programmeren II - Weekoverzicht | Fletches</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Page-specific styles for week overview */
+        .page-hero { text-align: center; margin-bottom: var(--space-2xl); }
+        .page-hero h1 { font-size: clamp(1.8rem, 5vw, 2.5rem); font-weight: 800; margin-bottom: 0.5rem; }
+        .page-hero p { color: var(--text-muted); font-size: 1rem; max-width: 600px; margin: 0 auto; }
+
+        .period-section { margin-bottom: var(--space-2xl); }
+        .period-header { display: flex; align-items: center; gap: 1rem; margin-bottom: var(--space-md); }
+        .period-title { font-size: 0.85rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em; white-space: nowrap; }
+        .period-line { flex: 1; height: 1px; background: var(--bg-raised); }
+        .period-badge { font-size: 0.68rem; padding: 0.2rem 0.6rem; border-radius: 1rem; font-weight: 600; white-space: nowrap; }
+        .badge-leeruitkomst { background: rgba(124,91,168,0.2); color: var(--purple-300); }
+
+        .weeks-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 0.8rem; }
+        .week-card {
+            position: relative; background: var(--bg-surface); border: 1px solid var(--border);
+            border-radius: var(--radius-xl); padding: 1.25rem; text-decoration: none; color: inherit;
+            transition: all 0.25s ease; display: flex; flex-direction: column;
+        }
+        .week-card:hover { border-color: var(--primary-600); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
+        .week-card.toets { border-color: rgba(255,214,10,0.25); background: linear-gradient(145deg, var(--bg-surface), rgba(255,214,10,0.02)); }
+        .week-card.toets:hover { border-color: rgba(255,214,10,0.45); }
+        .week-card.disabled { opacity: 0.35; pointer-events: none; }
+
+        .week-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 0.5rem; }
+        .week-number { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); }
+        .week-card.toets .week-number { color: var(--accent-yellow); }
+        .week-date { font-size: 0.68rem; color: var(--text-faint); }
+        .week-title { font-size: 1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.35rem; line-height: 1.3; }
+        .week-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; flex: 1; }
+        .week-topics { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.8rem; padding-top: 0.6rem; border-top: 1px solid var(--bg-raised); }
+        .topic-tag { font-size: 0.62rem; padding: 0.15rem 0.4rem; border-radius: 0.3rem; background: var(--bg-raised); color: var(--text-muted); font-weight: 500; }
+        .topic-tag.les-a { background: rgba(0,212,255,0.08); color: var(--accent); border: 1px solid rgba(0,212,255,0.12); }
+        .topic-tag.les-b { background: rgba(124,91,168,0.12); color: var(--purple-300); border: 1px solid rgba(124,91,168,0.15); }
+        .topic-tag.toets-tag { background: rgba(255,214,10,0.08); color: var(--accent-yellow); border: 1px solid rgba(255,214,10,0.12); }
+        .week-arrow { position: absolute; bottom: 1.25rem; right: 1.25rem; color: var(--border); transition: all 0.2s; }
+        .week-card:hover .week-arrow { color: var(--accent); transform: translateX(3px); }
+
+        .leeruitkomsten-section {
+            background: var(--bg-surface); border: 1px solid var(--border);
+            border-radius: var(--radius-xl); padding: var(--space-lg); margin-bottom: var(--space-2xl);
+        }
+        .leeruitkomsten-section h2 { font-size: 1.05rem; margin-bottom: var(--space-md); display: flex; align-items: center; gap: 0.5rem; }
+        .lu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 0.6rem; }
+        .lu-item { display: flex; gap: 0.6rem; padding: 0.6rem; border-radius: var(--radius-lg); background: var(--bg-raised); }
+        .lu-num { width: 26px; height: 26px; min-width: 26px; background: var(--purple-700); border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 700; color: white; }
+        .lu-text { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.45; }
+
+        @media (max-width: 768px) {
+            .weeks-grid { grid-template-columns: 1fr; }
+            .lu-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-left">
+            <a href="../index.html" class="nav-back">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                Home
+            </a>
+            <a href="../index.html" class="nav-logo">
+                <span class="nav-logo-icon">F</span>
+                <span class="nav-logo-text">Fletches</span>
+            </a>
+        </div>
+        <div class="nav-right">
+            <a href="index.html" class="nav-course-btn active">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                Programmeren
+            </a>
+            <a href="../data/index.html" class="nav-course-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+                Data
+            </a>
+            <div class="theme-toggle">
+                <button data-theme="dark" title="Dark">🌙</button>
+                <button data-theme="light" title="Light">☀️</button>
+                <button data-theme="amp" title="AMP">⚡</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+
+    <div class="main-content">
+        <!-- Hero -->
+        <div class="page-hero">
+            <h1>Programmeren II</h1>
+            <p>Object Oriented Programming, Algoritmen, Datastructuren &amp; Design Patterns. Kies een week om te beginnen.</p>
+        </div>
+
+        <!-- Leeruitkomsten -->
+        <div class="leeruitkomsten-section">
+            <h2>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+                Leeruitkomsten
+            </h2>
+            <div class="lu-grid">
+                <div class="lu-item">
+                    <span class="lu-num">1</span>
+                    <span class="lu-text">Kan de basisbeginselen van OOP, waaronder het gebruiken van klassen, toepassen op Data Science vraagstukken.</span>
+                </div>
+                <div class="lu-item">
+                    <span class="lu-num">2</span>
+                    <span class="lu-text">Kan een eenvoudig Data Science algoritme zelf definiëren en aanpassen gebruik makend van OOP.</span>
+                </div>
+                <div class="lu-item">
+                    <span class="lu-num">3</span>
+                    <span class="lu-text">Kan de efficiëntie van Python-algoritmen beoordelen op basis van Big-O-analyse.</span>
+                </div>
+                <div class="lu-item">
+                    <span class="lu-num">4</span>
+                    <span class="lu-text">Kan werken met de basis datastructuren zoals stacks, queues en dequeues.</span>
+                </div>
+                <div class="lu-item">
+                    <span class="lu-num">5</span>
+                    <span class="lu-text">Kan de basisprincipes van recursief programmeren toepassen.</span>
+                </div>
+                <div class="lu-item">
+                    <span class="lu-num">6</span>
+                    <span class="lu-text">Kan een complex Data Science algoritme zelf definiëren en aanpassen gebruik makend van OOP inclusief Design Patterns.</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Periode 1: Week 1-5 -->
+        <div class="period-section">
+            <div class="period-header">
+                <span class="period-title">Periode 1 — OOP Fundamentals</span>
+                <span class="period-line"></span>
+                <span class="period-badge badge-leeruitkomst">LU 1 &amp; 2</span>
+            </div>
+            <div class="weeks-grid">
+                <a href="week-1/index.html" class="week-card">
+                    <div class="week-top">
+                        <span class="week-number">Week 1</span>
+                        <span class="week-date">9 feb</span>
+                    </div>
+                    <h3 class="week-title">Intro OOP Fundamentals</h3>
+                    <p class="week-desc">Introductie tot Object Georiënteerd Programmeren. Verschil procedureel vs OOP, classes, objecten, attributen, methoden en constructors.</p>
+                    <div class="week-topics">
+                        <span class="topic-tag les-a">A: OOP Theorie</span>
+                        <span class="topic-tag les-b">B: OOP in Praktijk</span>
+                        <span class="topic-tag">Notebooks</span>
+                    </div>
+                    <span class="week-arrow">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </span>
+                </a>
+
+                <a href="week-2/index.html" class="week-card">
+                    <div class="week-top">
+                        <span class="week-number">Week 2</span>
+                        <span class="week-date">23 feb</span>
+                    </div>
+                    <h3 class="week-title">OOP in Data Science</h3>
+                    <p class="week-desc">Data preprocessing met OOP. Klassen opbouwen van scratch, missende waarden visualiseren en verwerken met behulp van OOP.</p>
+                    <div class="week-topics">
+                        <span class="topic-tag les-a">A: Data Preprocessing + OOP</span>
+                        <span class="topic-tag les-b">B: Klasse bouwen + Missing Values</span>
+                        <span class="topic-tag">Herkansing Prog I</span>
+                    </div>
+                    <span class="week-arrow">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </span>
+                </a>
+
+                <a href="week-3/index.html" class="week-card">
+                    <div class="week-top">
+                        <span class="week-number">Week 3</span>
+                        <span class="week-date">2 mrt</span>
+                    </div>
+                    <h3 class="week-title">Inheritance &amp; Polymorphism</h3>
+                    <p class="week-desc">Class attributes, class methods, overerving (inheritance) en polymorfisme. Toepassing in Data Science context.</p>
+                    <div class="week-topics">
+                        <span class="topic-tag les-a">A: Class Attr/Methods + Overerving</span>
+                        <span class="topic-tag les-b">B: Polymorfisme + DS Context</span>
+                        <span class="topic-tag">Notebooks</span>
+                    </div>
+                    <span class="week-arrow">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </span>
+                </a>
+
+                <a href="week-4/index.html" class="week-card">
+                    <div class="week-top">
+                        <span class="week-number">Week 4</span>
+                        <span class="week-date">9 mrt</span>
+                    </div>
+                    <h3 class="week-title">OOP in KNN</h3>
+                    <p class="week-desc">KNN-algoritme begrijpen en stap-voor-stap bouwen. Euclidische afstand, accuracy, confusion matrix. KNN ombouwen naar OOP klasse.</p>
+                    <div class="week-topics">
+                        <span class="topic-tag les-a">A: KNN Algoritme + Accuracy</span>
+                        <span class="topic-tag les-b">B: KNN Blueprint + OOP</span>
+                        <span class="topic-tag toets-tag">Oefentoets</span>
+                    </div>
+                    <span class="week-arrow">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </span>
+                </a>
+
+                <div class="week-card toets disabled">
+                    <div class="week-top">
+                        <span class="week-number">Week 5</span>
+                        <span class="week-date">16 mrt</span>
+                    </div>
+                    <h3 class="week-title">Toetsmoment 1</h3>
+                    <p class="week-desc">Toets over LU 1 &amp; 2: OOP fundamentals en eenvoudig DS algoritme met OOP. 20% van eindcijfer, 45 minuten, Remindo.</p>
+                    <div class="week-topics">
+                        <span class="topic-tag toets-tag">20% eindcijfer</span>
+                        <span class="topic-tag toets-tag">45 min</span>
+                        <span class="topic-tag toets-tag">Remindo</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Periode 2: Week 6-11 -->
+        <div class="period-section">
+            <div class="period-header">
+                <span class="period-title">Periode 2 — Algoritmen &amp; Datastructuren</span>
+                <span class="period-line"></span>
+                <span class="period-badge badge-leeruitkomst">LU 3, 4 &amp; 5</span>
+            </div>
+            <div class="weeks-grid">
+                <div class="week-card disabled">
+                    <div class="week-top">
+                        <span class="week-number">Week 6</span>
+                        <span class="week-date">23 mrt</span>
+                    </div>
+                    <h3 class="week-title">Algoritme Efficiëntie &amp; Big-O</h3>
+                    <p class="week-desc">Big-O notatie bepalen. Efficiëntie van Python-algoritmen beoordelen.</p>
+                    <div class="week-topics">
+                        <span class="topic-tag les-a">A: Big-O Intro</span>
+                        <span class="topic-tag les-b">B: Big-O Bepalen</span>
+                    </div>
+                </div>
+                <div class="week-card disabled">
+                    <div class="week-top">
+                        <span class="week-number">Week 7</span>
+                        <span class="week-date">30 mrt</span>
+                    </div>
+                    <h3 class="week-title">Complexere Big-O Analyses</h3>
+                    <p class="week-desc">Geavanceerde Big-O analyse. Complexere algoritmen beoordelen op efficiëntie.</p>
+                    <div class="week-topics">
+                        <span class="topic-tag les-a">A: Geavanceerde Big-O</span>
+                        <span class="topic-tag les-b">B: Analyse Oefeningen</span>
+                    </div>
+                </div>
+                <div class="week-card disabled">
+                    <div class="week-top">
+                        <span class="week-number">Week 8</span>
+                        <span class="week-date">6 apr</span>
+                    </div>
+                    <h3 class="week-title">Datastructuren</h3>
+                    <p class="week-desc">Stack, queue en dequeue. Werken met basis datastructuren.</p>
+                    <div class="week-topics">
+                        <span class="topic-tag les-a">A: Stack &amp; Queue</span>
+                        <span class="topic-tag les-b">B: Dequeue + Oefeningen</span>
+                    </div>
+                </div>
+                <div class="week-card disabled">
+                    <div class="week-top">
+                        <span class="week-number">Week 9</span>
+                        <span class="week-date">13 apr</span>
+                    </div>
+                    <h3 class="week-title">Datastructuren &amp; Recursie</h3>
+                    <p class="week-desc">Verdere datastructuren en introductie tot recursief programmeren.</p>
+                    <div class="week-topics">
+                        <span class="topic-tag les-a">A: Datastructuren verdieping</span>
+                        <span class="topic-tag les-b">B: Intro Recursie</span>
+                    </div>
+                </div>
+                <div class="week-card disabled">
+                    <div class="week-top">
+                        <span class="week-number">Week 10</span>
+                        <span class="week-date">20 apr</span>
+                    </div>
+                    <h3 class="week-title">Recursie</h3>
+                    <p class="week-desc">Basisprincipes van recursief programmeren toepassen. Oefentoets voorbereiding.</p>
+                    <div class="week-topics">
+                        <span class="topic-tag les-a">A: Recursie Verdieping</span>
+                        <span class="topic-tag les-b">B: Recursie Oefeningen</span>
+                        <span class="topic-tag toets-tag">Oefentoets</span>
+                    </div>
+                </div>
+                <div class="week-card toets disabled">
+                    <div class="week-top">
+                        <span class="week-number">Week 11</span>
+                        <span class="week-date">4 mei</span>
+                    </div>
+                    <h3 class="week-title">Toetsmoment 2</h3>
+                    <p class="week-desc">Toets over LU 3, 4 &amp; 5: Big-O, Datastructuren en Recursie.</p>
+                    <div class="week-topics">
+                        <span class="topic-tag toets-tag">Toets</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Periode 3: Week 12-17 -->
+        <div class="period-section">
+            <div class="period-header">
+                <span class="period-title">Periode 3 — Beslisbomen &amp; Design Patterns</span>
+                <span class="period-line"></span>
+                <span class="period-badge badge-leeruitkomst">LU 2 &amp; 6</span>
+            </div>
+            <div class="weeks-grid">
+                <div class="week-card disabled">
+                    <div class="week-top">
+                        <span class="week-number">Week 12</span>
+                        <span class="week-date">11 mei</span>
+                    </div>
+                    <h3 class="week-title">Intro tot Beslisbomen</h3>
+                    <p class="week-desc">Introductie tot het Decision Tree algoritme. Begrippen en fundamenten.</p>
+                    <div class="week-topics">
+                        <span class="topic-tag les-a">A: Beslisboom Theorie</span>
+                        <span class="topic-tag les-b">B: Oefeningen</span>
+                    </div>
+                </div>
+                <div class="week-card disabled">
+                    <div class="week-top">
+                        <span class="week-number">Week 13</span>
+                        <span class="week-date">18 mei</span>
+                    </div>
+                    <h3 class="week-title">Voorspellen in Beslisbomen</h3>
+                    <p class="week-desc">Voorspellingen maken met beslisbomen. Classificatie en regressie.</p>
+                    <div class="week-topics">
+                        <span class="topic-tag les-a">A: Voorspellen</span>
+                        <span class="topic-tag les-b">B: Implementatie</span>
+                    </div>
+                </div>
+                <div class="week-card disabled">
+                    <div class="week-top">
+                        <span class="week-number">Week 14</span>
+                        <span class="week-date">25 mei</span>
+                    </div>
+                    <h3 class="week-title">Maken van een Beslisboom</h3>
+                    <p class="week-desc">Zelf een beslisboom algoritme bouwen en implementeren in Python.</p>
+                    <div class="week-topics">
+                        <span class="topic-tag les-a">A: Bouwen</span>
+                        <span class="topic-tag les-b">B: Testen &amp; Verfijnen</span>
+                    </div>
+                </div>
+                <div class="week-card disabled">
+                    <div class="week-top">
+                        <span class="week-number">Week 15</span>
+                        <span class="week-date">1 jun</span>
+                    </div>
+                    <h3 class="week-title">Design Patterns — Template Method</h3>
+                    <p class="week-desc">Introductie tot Design Patterns. Template Method Pattern leren en toepassen.</p>
+                    <div class="week-topics">
+                        <span class="topic-tag les-a">A: Template Method</span>
+                        <span class="topic-tag les-b">B: Implementatie</span>
+                    </div>
+                </div>
+                <div class="week-card disabled">
+                    <div class="week-top">
+                        <span class="week-number">Week 16</span>
+                        <span class="week-date">8 jun</span>
+                    </div>
+                    <h3 class="week-title">Strategy Pattern</h3>
+                    <p class="week-desc">Strategy Pattern leren en toepassen. Oefentoets voorbereiding voor toetsmoment 3.</p>
+                    <div class="week-topics">
+                        <span class="topic-tag les-a">A: Strategy Pattern</span>
+                        <span class="topic-tag les-b">B: Oefeningen</span>
+                        <span class="topic-tag toets-tag">Oefentoets</span>
+                    </div>
+                </div>
+                <div class="week-card toets disabled">
+                    <div class="week-top">
+                        <span class="week-number">Week 17</span>
+                        <span class="week-date">15 jun</span>
+                    </div>
+                    <h3 class="week-title">Toetsmoment 3</h3>
+                    <p class="week-desc">Toets over LU 2 &amp; 6: Beslisbomen en Design Patterns.</p>
+                    <div class="week-topics">
+                        <span class="topic-tag toets-tag">Toets</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>Programmeren II - ADSAI &copy; 2025</p>
+    </footer>
+</body>
+</html>

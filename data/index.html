@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="nl" data-course="data">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data I - Weekoverzicht | Fletches</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        .page-hero { text-align: center; margin-bottom: var(--space-2xl); }
+        .page-hero h1 { font-size: clamp(1.8rem, 5vw, 2.5rem); font-weight: 800; margin-bottom: 0.5rem; }
+        .page-hero p { color: var(--text-muted); font-size: 1rem; max-width: 600px; margin: 0 auto; }
+        .period-section { margin-bottom: var(--space-2xl); }
+        .period-header { display: flex; align-items: center; gap: 1rem; margin-bottom: var(--space-md); }
+        .period-title { font-size: 0.85rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em; white-space: nowrap; }
+        .period-line { flex: 1; height: 1px; background: var(--border); }
+        .weeks-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 0.8rem; }
+        .week-card {
+            position: relative; background: var(--bg-surface); border: 1px solid var(--border);
+            border-radius: var(--radius-xl); padding: 1.25rem; text-decoration: none; color: inherit;
+            transition: all 0.25s ease; display: flex; flex-direction: column;
+        }
+        .week-card:hover { border-color: var(--accent-border); transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+        .week-card.toets { border-color: rgba(255,214,10,0.25); }
+        .week-card.toets:hover { border-color: rgba(255,214,10,0.45); }
+        .week-card.disabled { opacity: 0.35; pointer-events: none; }
+        .week-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 0.5rem; }
+        .week-number { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); }
+        .week-card.toets .week-number { color: var(--warning); }
+        .week-title { font-size: 1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.35rem; line-height: 1.3; }
+        .week-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; flex: 1; }
+        .week-topics { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.8rem; padding-top: 0.6rem; border-top: 1px solid var(--border-subtle); }
+        .topic-tag { font-size: 0.62rem; padding: 0.15rem 0.4rem; border-radius: 0.3rem; background: var(--bg-raised); color: var(--text-muted); font-weight: 500; }
+        .topic-tag.sql { background: var(--accent-surface); color: var(--accent); border: 1px solid var(--accent-border); }
+        .topic-tag.ml { background: rgba(168,85,247,0.08); color: #a855f7; border: 1px solid rgba(168,85,247,0.15); }
+        .topic-tag.toets-tag { background: rgba(255,214,10,0.08); color: var(--warning); border: 1px solid rgba(255,214,10,0.12); }
+        .week-arrow { position: absolute; bottom: 1.25rem; right: 1.25rem; color: var(--text-ghost); transition: all 0.2s; }
+        .week-card:hover .week-arrow { color: var(--accent); transform: translateX(3px); }
+        @media (max-width: 768px) { .weeks-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-left">
+            <a href="../index.html" class="nav-back"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg> Home</a>
+            <a href="../index.html" class="nav-logo"><span class="nav-logo-icon">F</span><span class="nav-logo-text">Fletches</span></a>
+        </div>
+        <div class="nav-right">
+            <a href="../programmeren/index.html" class="nav-course-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg> Programmeren</a>
+            <a href="index.html" class="nav-course-btn active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg> Data</a>
+            <div class="theme-toggle"><button data-theme="dark" title="Dark">🌙</button><button data-theme="light" title="Light">☀️</button><button data-theme="amp" title="AMP">⚡</button></div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="page-hero">
+            <h1>Data I</h1>
+            <p>SQL, Databases, Machine Learning, Regressie, Classificatie &amp; Pre-processing</p>
+        </div>
+
+        <!-- Periode 3 -->
+        <div class="period-section">
+            <div class="period-header">
+                <span class="period-title">Periode 3 — SQL</span>
+                <div class="period-line"></div>
+            </div>
+            <div class="weeks-grid">
+                <a href="week-1/index.html" class="week-card">
+                    <div class="week-top"><span class="week-number">Week 1</span></div>
+                    <h3 class="week-title">SQL: Selecteren</h3>
+                    <p class="week-desc">Introductie databases, RDBMS, SELECT, FROM, DISTINCT, COUNT en bewerkingen.</p>
+                    <div class="week-topics"><span class="topic-tag sql">SQL</span><span class="topic-tag">Notebook</span></div>
+                    <svg class="week-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
+                <div class="week-card disabled">
+                    <div class="week-top"><span class="week-number">Week 2</span></div>
+                    <h3 class="week-title">SQL: Filteren &amp; Aggregeren</h3>
+                    <p class="week-desc">WHERE, AND, OR, BETWEEN, LIKE, IN en aggregatie functies.</p>
+                    <div class="week-topics"><span class="topic-tag sql">SQL</span><span class="topic-tag">Notebook</span></div>
+                </div>
+                <div class="week-card disabled">
+                    <div class="week-top"><span class="week-number">Week 3</span></div>
+                    <h3 class="week-title">SQL: Sorteren &amp; Groeperen</h3>
+                    <p class="week-desc">ORDER BY, GROUP BY, HAVING en combinaties.</p>
+                    <div class="week-topics"><span class="topic-tag sql">SQL</span><span class="topic-tag">Notebook</span></div>
+                </div>
+                <div class="week-card disabled">
+                    <div class="week-top"><span class="week-number">Week 4</span></div>
+                    <h3 class="week-title">Oefentoets</h3>
+                    <p class="week-desc">Voorbereiding op toetsmoment 1.</p>
+                    <div class="week-topics"><span class="topic-tag toets-tag">Oefentoets</span></div>
+                </div>
+                <div class="week-card toets disabled">
+                    <div class="week-top"><span class="week-number">Week 5</span></div>
+                    <h3 class="week-title">Toetsmoment 1</h3>
+                    <p class="week-desc">Toets over SQL: selecteren, filteren, aggregeren, sorteren en groeperen.</p>
+                    <div class="week-topics"><span class="topic-tag toets-tag">Toets</span></div>
+                </div>
+                <div class="week-card disabled">
+                    <div class="week-top"><span class="week-number">Week 6</span></div>
+                    <h3 class="week-title">SQL: Joining &amp; Verzamelingenleer</h3>
+                    <p class="week-desc">JOIN types en set theory voor databases.</p>
+                    <div class="week-topics"><span class="topic-tag sql">SQL</span><span class="topic-tag">Notebook</span></div>
+                </div>
+                <div class="week-card disabled">
+                    <div class="week-top"><span class="week-number">Week 7</span></div>
+                    <h3 class="week-title">SQL: Subqueries</h3>
+                    <p class="week-desc">Geneste queries en geavanceerde SQL technieken.</p>
+                    <div class="week-topics"><span class="topic-tag sql">SQL</span><span class="topic-tag">Notebook</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Periode 4 -->
+        <div class="period-section">
+            <div class="period-header">
+                <span class="period-title">Periode 4 — Machine Learning</span>
+                <div class="period-line"></div>
+            </div>
+            <div class="weeks-grid">
+                <div class="week-card disabled">
+                    <div class="week-top"><span class="week-number">Week 8</span></div>
+                    <h3 class="week-title">ML: Train/Test Split, KNN</h3>
+                    <p class="week-desc">Introductie machine learning, train/test split, underfitting/overfitting en KNN.</p>
+                    <div class="week-topics"><span class="topic-tag ml">Machine Learning</span><span class="topic-tag">Notebook</span></div>
+                </div>
+                <div class="week-card disabled">
+                    <div class="week-top"><span class="week-number">Week 9</span></div>
+                    <h3 class="week-title">ML: Lineaire Regressie &amp; Metrics</h3>
+                    <p class="week-desc">Lineaire regressie en evaluatiemetrieken.</p>
+                    <div class="week-topics"><span class="topic-tag ml">Machine Learning</span><span class="topic-tag">Notebooks</span></div>
+                </div>
+                <div class="week-card disabled">
+                    <div class="week-top"><span class="week-number">Week 10</span></div>
+                    <h3 class="week-title">Oefentoets</h3>
+                    <p class="week-desc">Voorbereiding op toetsmoment 2.</p>
+                    <div class="week-topics"><span class="topic-tag toets-tag">Oefentoets</span></div>
+                </div>
+                <div class="week-card toets disabled">
+                    <div class="week-top"><span class="week-number">Week 11</span></div>
+                    <h3 class="week-title">Toetsmoment 2</h3>
+                    <p class="week-desc">Toets over SQL joining, subqueries en introductie ML.</p>
+                    <div class="week-topics"><span class="topic-tag toets-tag">Toets</span></div>
+                </div>
+                <div class="week-card disabled">
+                    <div class="week-top"><span class="week-number">Week 12</span></div>
+                    <h3 class="week-title">ML: Regularisatie &amp; Cross Validation</h3>
+                    <p class="week-desc">Lineaire regressie, regularisatie en cross validation.</p>
+                    <div class="week-topics"><span class="topic-tag ml">Machine Learning</span><span class="topic-tag">Notebook</span></div>
+                </div>
+                <div class="week-card disabled">
+                    <div class="week-top"><span class="week-number">Week 13</span></div>
+                    <h3 class="week-title">ML: Classificatie Metrics</h3>
+                    <p class="week-desc">Classificatie evaluatiemetrieken.</p>
+                    <div class="week-topics"><span class="topic-tag ml">Machine Learning</span><span class="topic-tag">Notebook</span></div>
+                </div>
+                <div class="week-card disabled">
+                    <div class="week-top"><span class="week-number">Week 14</span></div>
+                    <h3 class="week-title">ML: Grid Search</h3>
+                    <p class="week-desc">Hyperparameter tuning met grid search.</p>
+                    <div class="week-topics"><span class="topic-tag ml">Machine Learning</span><span class="topic-tag">Notebook</span></div>
+                </div>
+                <div class="week-card disabled">
+                    <div class="week-top"><span class="week-number">Week 15</span></div>
+                    <h3 class="week-title">ML: Pre-processing</h3>
+                    <p class="week-desc">Data pre-processing voor machine learning.</p>
+                    <div class="week-topics"><span class="topic-tag ml">Machine Learning</span><span class="topic-tag">Notebook</span></div>
+                </div>
+                <div class="week-card disabled">
+                    <div class="week-top"><span class="week-number">Week 16</span></div>
+                    <h3 class="week-title">Oefentoets</h3>
+                    <p class="week-desc">Voorbereiding op toetsmoment 3.</p>
+                    <div class="week-topics"><span class="topic-tag toets-tag">Oefentoets</span></div>
+                </div>
+                <div class="week-card toets disabled">
+                    <div class="week-top"><span class="week-number">Week 17</span></div>
+                    <h3 class="week-title">Toetsmoment 3</h3>
+                    <p class="week-desc">Toets over machine learning.</p>
+                    <div class="week-topics"><span class="topic-tag toets-tag">Toets</span></div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer"><p>Data I - ADSAI &copy; 2025</p></footer>
+    </main>
+    <script src="../js/main.js"></script>
+</body>
+</html>

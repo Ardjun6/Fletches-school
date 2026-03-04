@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="nl" data-course="data">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les B - SELECT, COUNT &amp; Bewerkingen | Data I Week 1</title>
+    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-left">
+            <a href="../index.html" class="nav-back">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                Week 1
+            </a>
+            <a href="../../../index.html" class="nav-logo">
+                <span class="nav-logo-icon">F</span>
+                <span class="nav-logo-text">Fletches</span>
+            </a>
+        </div>
+        <div class="nav-right">
+            <a href="../../../programmeren/index.html" class="nav-course-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                Programmeren
+            </a>
+            <a href="../../index.html" class="nav-course-btn active">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+                Data
+            </a>
+            <div class="theme-toggle">
+                <button data-theme="dark" title="Dark">🌙</button>
+                <button data-theme="light" title="Light">☀️</button>
+                <button data-theme="amp" title="AMP">⚡</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <header class="top-bar">
+            <div class="breadcrumb">
+                <a href="../../index.html" style="color:var(--text-muted);text-decoration:none">Data I</a>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                <a href="../index.html" style="color:var(--text-muted);text-decoration:none">Week 1</a>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                <span>Les B</span>
+            </div>
+        </header>
+
+        <div class="lesson-header">
+            <div class="lesson-meta">
+                <span class="lesson-badge">Week 1 · Les B</span>
+            </div>
+            <h1 class="lesson-page-title">SELECT, COUNT &amp; Bewerkingen</h1>
+            <p class="lesson-page-desc">Data selecteren uit tabellen, unieke waarden ophalen, tellen en berekeningen uitvoeren met SQL.</p>
+        </div>
+
+        <div class="lesson-content-area">
+
+            <div class="content-section">
+                <h2>Selecteren van data</h2>
+                <p>De basis van SQL bestaat uit twee keywords:</p>
+
+<div class="image-container" style="cursor:default; background: var(--bg-raised); padding: 1.5rem; text-align: center;">
+    
+<svg viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg" style="max-width:560px; width:100%;">
+    <style>
+        text { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .title { font-size: 12px; font-weight: 700; }
+        .code { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; }
+        .small { font-size: 10px; }
+    </style>
+    <!-- Database -->
+    <rect x="20" y="40" width="140" height="120" rx="10" fill="var(--bg-surface)" stroke="var(--border)" stroke-width="1.5"/>
+    <text x="90" y="65" text-anchor="middle" fill="var(--text-primary)" class="title">🗄️ Database</text>
+    <text x="90" y="88" text-anchor="middle" fill="var(--text-muted)" class="small">Tabel AUTO</text>
+    <text x="40" y="108" fill="var(--text-secondary)" class="small">Jaar | Merk</text>
+    <text x="40" y="123" fill="var(--text-secondary)" class="small">2015 | Tesla</text>
+    <text x="40" y="138" fill="var(--text-secondary)" class="small">2015 | BMW</text>
+    <text x="40" y="153" fill="var(--text-secondary)" class="small">2016 | Audi</text>
+    <!-- Arrow -->
+    <line x1="170" y1="100" x2="220" y2="100" stroke="var(--accent)" stroke-width="2"/>
+    <polygon points="220,100 212,94 212,106" fill="var(--accent)"/>
+    <!-- SQL Query -->
+    <rect x="225" y="55" width="180" height="90" rx="10" fill="var(--accent-surface)" stroke="var(--accent)" stroke-width="2"/>
+    <text x="315" y="80" text-anchor="middle" fill="var(--accent)" class="title">SQL Query</text>
+    <text x="315" y="105" text-anchor="middle" fill="var(--text-primary)" class="code">SELECT Jaar</text>
+    <text x="315" y="125" text-anchor="middle" fill="var(--text-primary)" class="code">FROM AUTO</text>
+    <!-- Arrow -->
+    <line x1="415" y1="100" x2="465" y2="100" stroke="var(--success)" stroke-width="2"/>
+    <polygon points="465,100 457,94 457,106" fill="var(--success)"/>
+    <!-- Result -->
+    <rect x="470" y="45" width="110" height="110" rx="10" fill="var(--bg-surface)" stroke="var(--success)" stroke-width="1.5"/>
+    <text x="525" y="70" text-anchor="middle" fill="var(--success)" class="title">✅ Resultaat</text>
+    <text x="525" y="95" text-anchor="middle" fill="var(--text-secondary)" class="small">Jaar</text>
+    <line x1="490" y1="100" x2="560" y2="100" stroke="var(--border)" stroke-width="1"/>
+    <text x="525" y="118" text-anchor="middle" fill="var(--text-secondary)" class="small">2015</text>
+    <text x="525" y="133" text-anchor="middle" fill="var(--text-secondary)" class="small">2015</text>
+    <text x="525" y="148" text-anchor="middle" fill="var(--text-secondary)" class="small">2016</text>
+</svg>
+
+    <div class="image-caption">SQL SELECT flow: Database → Query → Resultaat</div>
+</div>
+                <ul>
+                    <li><code>SELECT</code> — geeft aan dat er data geselecteerd wordt, gevolgd door wat je wilt selecteren</li>
+                    <li><code>FROM</code> — geeft aan waaruit geselecteerd wordt</li>
+                </ul>
+                <p>SELECT en FROM zijn <strong>keywords</strong>. Ze worden vaak in hoofdletters geschreven, maar dat hoeft niet.</p>
+
+                <div class="code-block">
+                    <div class="code-header">SQL</div>
+                    <pre><code>SELECT Jaar
+FROM AUTO</code></pre>
+                </div>
+                <p>Dit geeft alle waarden uit de kolom "Jaar" in de tabel AUTO.</p>
+            </div>
+
+            <div class="content-section">
+                <h2>Meerdere kolommen selecteren</h2>
+                <p>Je kunt ook meerdere kolommen selecteren door ze te scheiden met een komma:</p>
+                <div class="code-block">
+                    <div class="code-header">SQL</div>
+                    <pre><code>SELECT Model, Lengte FROM Modellen</code></pre>
+                </div>
+                <p>Of alle kolommen in een tabel met het sterretje:</p>
+                <div class="code-block">
+                    <div class="code-header">SQL</div>
+                    <pre><code>SELECT * FROM Modellen</code></pre>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>SELECT DISTINCT</h2>
+                <p><code>SELECT</code> geeft blind alle waarden uit een tabel, inclusief eventuele dubbelingen.</p>
+                <p>Met <code>SELECT DISTINCT</code> krijg je alleen de <strong>unieke waarden</strong>:</p>
+                <div class="code-block">
+                    <div class="code-header">SQL</div>
+                    <pre><code>SELECT DISTINCT Model FROM Modellen</code></pre>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>COUNT</h2>
+                <p>Met <code>COUNT</code> tel je het aantal regels:</p>
+                <div class="code-block">
+                    <div class="code-header">SQL</div>
+                    <pre><code>-- Aantal regels in de tabel
+SELECT COUNT(*) FROM Modellen
+
+-- Aantal niet-lege regels in kolom Model
+SELECT COUNT(Model) FROM Modellen
+
+-- Aantal unieke waarden in kolom Model
+SELECT COUNT(DISTINCT Model) FROM Modellen</code></pre>
+                </div>
+
+                <h3>Voorbeeld</h3>
+                <p>Gegeven de tabel Modellen:</p>
+                <table style="width:auto; border-collapse:collapse; margin: 1rem 0;">
+                    <tr style="border-bottom: 2px solid var(--border);">
+                        <th style="padding:0.5rem 1rem; text-align:left; color:var(--accent);">Model</th>
+                        <th style="padding:0.5rem 1rem; text-align:left; color:var(--accent);">Jaar</th>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--border-subtle);"><td style="padding:0.4rem 1rem;">Audi</td><td style="padding:0.4rem 1rem;">2011</td></tr>
+                    <tr style="border-bottom: 1px solid var(--border-subtle);"><td style="padding:0.4rem 1rem;">Audi</td><td style="padding:0.4rem 1rem;">2012</td></tr>
+                    <tr style="border-bottom: 1px solid var(--border-subtle);"><td style="padding:0.4rem 1rem;"><em>(leeg)</em></td><td style="padding:0.4rem 1rem;">2011</td></tr>
+                    <tr><td style="padding:0.4rem 1rem;">Mercedes</td><td style="padding:0.4rem 1rem;">2012</td></tr>
+                </table>
+                <ul>
+                    <li><code>COUNT(*)</code> → <strong>4</strong> (alle rijen)</li>
+                    <li><code>COUNT(Model)</code> → <strong>3</strong> (1 lege rij wordt overgeslagen)</li>
+                    <li><code>COUNT(DISTINCT Model)</code> → <strong>2</strong> (Audi en Mercedes)</li>
+                </ul>
+            </div>
+
+            <div class="content-section">
+                <h2>Bewerkingen</h2>
+                <p>SQL ondersteunt alle standaard berekeningen:</p>
+                <div class="code-block">
+                    <div class="code-header">SQL</div>
+                    <pre><code>-- Som
+SELECT SUM(Omzet) FROM Verkopen
+
+-- Aantal
+SELECT COUNT(Omzet) FROM Verkopen
+
+-- Gemiddelde
+SELECT AVG(Omzet) FROM Verkopen
+
+-- Minimum
+SELECT MIN(Omzet) FROM Verkopen
+
+-- Maximum
+SELECT MAX(Omzet) FROM Verkopen</code></pre>
+                </div>
+            </div>
+
+            <div class="key-points">
+                <div class="key-points-title">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    Kernpunten Les B
+                </div>
+                <ul>
+                    <li><code>SELECT ... FROM ...</code> is de basis van elke SQL query</li>
+                    <li><code>SELECT *</code> selecteert alle kolommen uit een tabel</li>
+                    <li><code>DISTINCT</code> geeft alleen unieke waarden terug</li>
+                    <li><code>COUNT(*)</code> telt alle rijen, <code>COUNT(kolom)</code> telt niet-lege waarden</li>
+                    <li><code>SUM</code>, <code>AVG</code>, <code>MIN</code>, <code>MAX</code> voeren berekeningen uit op kolommen</li>
+                </ul>
+            </div>
+
+            <nav class="lesson-nav">
+                <a href="les-a.html" class="nav-btn">
+                    <div>
+                        <span class="nav-label">Vorige</span>
+                        <span class="nav-title">← Les A</span>
+                    </div>
+                </a>
+                <a href="samenvatting.html" class="nav-btn">
+                    <div>
+                        <span class="nav-label">Volgende</span>
+                        <span class="nav-title">Samenvatting →</span>
+                    </div>
+                </a>
+            </nav>
+        </div>
+
+        <footer class="footer"><p>Data I - ADSAI &copy; 2025</p></footer>
+    </main>
+    <script src="../../../js/main.js"></script>
+</body>
+</html>

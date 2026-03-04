@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="nl" data-course="programmeren">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les 4: OOP in Python Code | Week 1 | Fletches</title>
+    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-left">
+            <a href="../index.html" class="nav-back">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                Week 1
+            </a>
+            <a href="../../../index.html" class="nav-logo">
+                <span class="nav-logo-icon">F</span>
+                <span class="nav-logo-text">Fletches</span>
+            </a>
+        </div>
+        <div class="nav-right">
+            <a href="../../index.html" class="nav-course-btn active">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                Programmeren
+            </a>
+            <a href="../../../data/index.html" class="nav-course-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+                Data
+            </a>
+            <div class="theme-toggle">
+                <button data-theme="dark" title="Dark">🌙</button>
+                <button data-theme="light" title="Light">☀️</button>
+                <button data-theme="amp" title="AMP">⚡</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <header class="top-bar">
+            <div class="breadcrumb">
+                <a href="../index.html">Week 1</a>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                <span>Les 4</span>
+            </div>
+            <div class="progress-indicator">
+                <span class="progress-text">Voortgang Week 1</span>
+                <div class="progress-bar"><div class="progress-fill" style="width: 50%"></div></div>
+            </div>
+        </header>
+
+        <div class="lesson-header">
+            <div class="lesson-meta">
+                <span class="lesson-badge">Les 4</span>
+                <span class="lesson-badge">Week 1</span>
+            </div>
+            <h1 class="lesson-page-title">OOP in Python Code</h1>
+            <p class="lesson-page-desc">Van theorie naar praktijk: leer hoe je classes, constructors, attributen en methoden schrijft in Python.</p>
+        </div>
+
+        <div class="lesson-content-area">
+            
+            <section class="content-section">
+                <h2>Bella en Kees als OOP objects</h2>
+                <p>Laten we kijken hoe we onze honden Bella en Kees kunnen modelleren in Python OOP code.</p>
+                
+                <div class="image-container">
+                    <img src="../assets/week-01/b_image35.jpeg" alt="Foto van een hond (Bella)">
+                    <p class="image-caption">Bella - 70 cm hoog, 28 kg</p>
+                </div>
+                
+                <div class="image-container">
+                    <img src="../assets/week-01/b_image36.jpeg" alt="Foto van een keeshond (Kees)">
+                    <p class="image-caption">Kees - 40 cm hoog, 25 kg</p>
+                </div>
+            </section>
+
+            <section class="content-section">
+                <h2>De Hond Class in Python</h2>
+                <p>Hieronder zie je hoe de Hond klasse eruitziet in Python. Let op de verschillende onderdelen:</p>
+                
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-language">Python</span>
+                    </div>
+                    <pre><code>class Hond: # Class
+    """
+    Een klasse die een Hond representeert.
+    """
+    def __init__(self, naam, hoogte, gewicht): # Constructor
+        """
+        Initializeer een nieuwe hond met basis attributes:
+            naam (str): The name of the dog
+            hoogte (float): Hoogte in centimeters
+            gewicht (float): Weight in kilograms
+        """
+
+        # Attributes
+        self.naam = naam
+        self.hoogte = hoogte
+        self.gewicht = gewicht
+        self.energie_level = 100  # start vol</code></pre>
+                </div>
+
+                <div class="callout callout-tip">
+                    <div class="callout-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M12 16v-4"></path>
+                            <path d="M12 8h.01"></path>
+                        </svg>
+                    </div>
+                    <div class="callout-content">
+                        <h4>Constructor (__init__)</h4>
+                        <p>De <code>__init__</code> methode is de constructor. Deze wordt automatisch aangeroepen wanneer je een nieuw object maakt. Hier stel je de beginwaarden in voor je attributen.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section">
+                <h2>Een Methode Toevoegen</h2>
+                <p>Nu voegen we een methode toe waarmee de hond kan rennen:</p>
+                
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-language">Python</span>
+                    </div>
+                    <pre><code>def ren(self): # Method
+    """
+    Honden rennen en verbruiken energie.
+    """
+
+    if self.energie_level >= 20:
+        self.energie_level -= 20
+        return f"{self.naam} rent vrolijk! Energie level: {self.energie_level}"
+    
+    else:
+        return f"{self.naam} is te moe om te rennen. Geef iets te eten!"</code></pre>
+                </div>
+
+                <div class="callout callout-important">
+                    <div class="callout-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="8" x2="12" y2="12"></line>
+                            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                        </svg>
+                    </div>
+                    <div class="callout-content">
+                        <h4>Belangrijk: self</h4>
+                        <p>Het keyword <code>self</code> verwijst naar het huidige object. Hiermee kun je de attributen van dat specifieke object gebruiken en aanpassen.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section">
+                <h2>Objecten Aanmaken</h2>
+                <p>Nu kunnen we onze honden Bella en Kees aanmaken als objecten:</p>
+                
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-language">Python</span>
+                    </div>
+                    <pre><code># Objects
+hond_bella = Hond("Bella", 70, 28)
+hond_kees = Hond("Kees", 40, 25)</code></pre>
+                </div>
+                
+                <div class="callout callout-example">
+                    <div class="callout-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="3" y1="9" x2="21" y2="9"></line>
+                            <line x1="9" y1="21" x2="9" y2="9"></line>
+                        </svg>
+                    </div>
+                    <div class="callout-content">
+                        <h4>Wat gebeurt hier?</h4>
+                        <p><code>Hond("Bella", 70, 28)</code> roept de constructor aan met de naam "Bella", hoogte 70 cm en gewicht 28 kg. Dit maakt een nieuw Hond-object aan met deze waarden.</p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="key-points">
+                <h3 class="key-points-title">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                    </svg>
+                    Key Points
+                </h3>
+                <ul>
+                    <li><code>class Hond:</code> definieert de klasse</li>
+                    <li><code>def __init__(self, ...):</code> is de constructor</li>
+                    <li><code>self.attribuut = waarde</code> stelt een attribuut in</li>
+                    <li><code>def methode(self):</code> definieert een methode</li>
+                    <li><code>Hond("naam", waarde, waarde)</code> maakt een nieuw object</li>
+                </ul>
+            </div>
+
+            <!-- Quiz Section -->
+            <div class="quiz-section">
+                <h3 class="quiz-title">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg>
+                    Test je kennis
+                </h3>
+
+                <div class="quiz-question" data-correct="c">
+                    <p class="question-text">1. Welke methode wordt automatisch aangeroepen bij het maken van een object?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-answer="a">
+                            <span class="option-marker">A</span>
+                            <span>def start(self)</span>
+                        </div>
+                        <div class="quiz-option" data-answer="b">
+                            <span class="option-marker">B</span>
+                            <span>def create(self)</span>
+                        </div>
+                        <div class="quiz-option" data-answer="c">
+                            <span class="option-marker">C</span>
+                            <span>def __init__(self)</span>
+                        </div>
+                        <div class="quiz-option" data-answer="d">
+                            <span class="option-marker">D</span>
+                            <span>def new(self)</span>
+                        </div>
+                    </div>
+                    <button class="check-answer-btn">Controleer antwoord</button>
+                    <div class="quiz-feedback correct">Correct! De __init__ methode is de constructor die automatisch wordt aangeroepen.</div>
+                    <div class="quiz-feedback incorrect">Helaas, het juiste antwoord is C. De __init__ methode is de constructor die automatisch wordt aangeroepen.</div>
+                </div>
+
+                <div class="quiz-question" data-correct="b">
+                    <p class="question-text">2. Waar staat 'self' voor in een Python class?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-answer="a">
+                            <span class="option-marker">A</span>
+                            <span>De naam van de klasse</span>
+                        </div>
+                        <div class="quiz-option" data-answer="b">
+                            <span class="option-marker">B</span>
+                            <span>Het huidige object</span>
+                        </div>
+                        <div class="quiz-option" data-answer="c">
+                            <span class="option-marker">C</span>
+                            <span>Een global variabele</span>
+                        </div>
+                        <div class="quiz-option" data-answer="d">
+                            <span class="option-marker">D</span>
+                            <span>De return waarde</span>
+                        </div>
+                    </div>
+                    <button class="check-answer-btn">Controleer antwoord</button>
+                    <div class="quiz-feedback correct">Correct! 'self' verwijst naar het huidige object, zodat je de attributen van dat specifieke object kunt gebruiken.</div>
+                    <div class="quiz-feedback incorrect">Helaas, het juiste antwoord is B. 'self' verwijst naar het huidige object.</div>
+                </div>
+
+                <div class="quiz-question" data-correct="a">
+                    <p class="question-text">3. Hoe maak je een nieuw Hond object met naam "Max", hoogte 60 en gewicht 30?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-answer="a">
+                            <span class="option-marker">A</span>
+                            <span>Hond("Max", 60, 30)</span>
+                        </div>
+                        <div class="quiz-option" data-answer="b">
+                            <span class="option-marker">B</span>
+                            <span>new Hond("Max", 60, 30)</span>
+                        </div>
+                        <div class="quiz-option" data-answer="c">
+                            <span class="option-marker">C</span>
+                            <span>create Hond("Max", 60, 30)</span>
+                        </div>
+                        <div class="quiz-option" data-answer="d">
+                            <span class="option-marker">D</span>
+                            <span>Hond.new("Max", 60, 30)</span>
+                        </div>
+                    </div>
+                    <button class="check-answer-btn">Controleer antwoord</button>
+                    <div class="quiz-feedback correct">Correct! In Python maak je een object door de klassenaam aan te roepen met de argumenten voor de constructor.</div>
+                    <div class="quiz-feedback incorrect">Helaas, het juiste antwoord is A. In Python maak je een object door de klassenaam aan te roepen met de argumenten.</div>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="lesson-nav">
+                <a href="les-3-oop-begrippen.html" class="nav-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                    <div>
+                        <span class="nav-label">Vorige les</span>
+                        <span class="nav-title">OOP Begrippen</span>
+                    </div>
+                </a>
+                <a href="les-5-objecten-maken.html" class="nav-btn">
+                    <div>
+                        <span class="nav-label">Volgende les</span>
+                        <span class="nav-title">Objecten Maken</span>
+                    </div>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </a>
+            </nav>
+        </div>
+
+        <footer class="footer">
+            <p>Programmeren II - ADSAI &copy; 2025</p>
+        </footer>
+    </main>
+
+    <script src="../../../js/main.js"></script>
+</body>
+</html>

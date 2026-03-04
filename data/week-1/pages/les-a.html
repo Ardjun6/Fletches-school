@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="nl" data-course="data">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les A - Databases &amp; SQL Introductie | Data I Week 1</title>
+    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-left">
+            <a href="../index.html" class="nav-back">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                Week 1
+            </a>
+            <a href="../../../index.html" class="nav-logo">
+                <span class="nav-logo-icon">F</span>
+                <span class="nav-logo-text">Fletches</span>
+            </a>
+        </div>
+        <div class="nav-right">
+            <a href="../../../programmeren/index.html" class="nav-course-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                Programmeren
+            </a>
+            <a href="../../index.html" class="nav-course-btn active">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+                Data
+            </a>
+            <div class="theme-toggle">
+                <button data-theme="dark" title="Dark">🌙</button>
+                <button data-theme="light" title="Light">☀️</button>
+                <button data-theme="amp" title="AMP">⚡</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <header class="top-bar">
+            <div class="breadcrumb">
+                <a href="../../index.html" style="color:var(--text-muted);text-decoration:none">Data I</a>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                <a href="../index.html" style="color:var(--text-muted);text-decoration:none">Week 1</a>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                <span>Les A</span>
+            </div>
+        </header>
+
+        <div class="lesson-header">
+            <div class="lesson-meta">
+                <span class="lesson-badge">Week 1 · Les A</span>
+            </div>
+            <h1 class="lesson-page-title">Databases &amp; SQL Introductie</h1>
+            <p class="lesson-page-desc">Wat is een database, hoe werkt een RDBMS, en waarom gebruiken we SQL als Data Scientist?</p>
+        </div>
+
+        <div class="lesson-content-area">
+
+            <div class="content-section">
+                <h2>Databases</h2>
+                <p>Een database is een gestructureerde verzameling tabellen met data. We werken met een <strong>RDBMS</strong> — een Relational Database Management System.</p>
+                <p>Kenmerken van een RDBMS:</p>
+
+<div class="image-container" style="cursor:default; background: var(--bg-raised); padding: 1.5rem; text-align: center;">
+    
+<svg viewBox="0 0 700 320" xmlns="http://www.w3.org/2000/svg" style="max-width:650px; width:100%;">
+    <style>
+        text { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .title { font-size: 12px; font-weight: 700; }
+        .col { font-size: 10px; }
+        .rel { font-size: 9px; font-weight: 600; }
+    </style>
+    <!-- Table: Modellen -->
+    <rect x="30" y="30" width="180" height="180" rx="10" fill="var(--bg-surface)" stroke="var(--accent)" stroke-width="1.5"/>
+    <rect x="30" y="30" width="180" height="32" rx="10" fill="var(--accent-surface)"/>
+    <rect x="30" y="52" width="180" height="10" fill="var(--accent-surface)"/>
+    <text x="120" y="52" text-anchor="middle" fill="var(--accent)" class="title">Modellen</text>
+    <text x="45" y="82" fill="var(--text-secondary)" class="col">🔑 Model</text>
+    <text x="45" y="102" fill="var(--text-secondary)" class="col">Lengte</text>
+    <text x="45" y="122" fill="var(--text-secondary)" class="col">Breedte</text>
+    <text x="45" y="142" fill="var(--text-secondary)" class="col">Motor</text>
+    <text x="45" y="162" fill="var(--text-secondary)" class="col">Kleuren</text>
+    <!-- Table: Verkopen -->
+    <rect x="260" y="30" width="180" height="180" rx="10" fill="var(--bg-surface)" stroke="var(--info)" stroke-width="1.5"/>
+    <rect x="260" y="30" width="180" height="32" rx="10" fill="rgba(0,212,255,0.06)"/>
+    <rect x="260" y="52" width="180" height="10" fill="rgba(0,212,255,0.06)"/>
+    <text x="350" y="52" text-anchor="middle" fill="var(--info)" class="title">Verkopen</text>
+    <text x="275" y="82" fill="var(--text-secondary)" class="col">Jaar</text>
+    <text x="275" y="102" fill="var(--text-secondary)" class="col">Maand</text>
+    <text x="275" y="122" fill="var(--text-secondary)" class="col">🔑 Land</text>
+    <text x="275" y="142" fill="var(--text-secondary)" class="col">🔑 Model</text>
+    <text x="275" y="162" fill="var(--text-secondary)" class="col">Omzet</text>
+    <!-- Table: Land -->
+    <rect x="490" y="30" width="180" height="160" rx="10" fill="var(--bg-surface)" stroke="var(--success)" stroke-width="1.5"/>
+    <rect x="490" y="30" width="180" height="32" rx="10" fill="rgba(0,245,160,0.06)"/>
+    <rect x="490" y="52" width="180" height="10" fill="rgba(0,245,160,0.06)"/>
+    <text x="580" y="52" text-anchor="middle" fill="var(--success)" class="title">Land</text>
+    <text x="505" y="82" fill="var(--text-secondary)" class="col">🔑 Land</text>
+    <text x="505" y="102" fill="var(--text-secondary)" class="col">Aantal vestigingen</text>
+    <text x="505" y="122" fill="var(--text-secondary)" class="col">Munteenheid</text>
+    <text x="505" y="142" fill="var(--text-secondary)" class="col">Aantal medewerkers</text>
+    <!-- Relations -->
+    <line x1="210" y1="142" x2="260" y2="142" stroke="var(--warning)" stroke-width="2"/>
+    <circle cx="210" cy="142" r="4" fill="var(--warning)"/>
+    <circle cx="260" cy="142" r="4" fill="var(--warning)"/>
+    <text x="235" y="135" text-anchor="middle" fill="var(--warning)" class="rel">Model</text>
+    <line x1="440" y1="122" x2="490" y2="82" stroke="var(--warning)" stroke-width="2"/>
+    <circle cx="440" cy="122" r="4" fill="var(--warning)"/>
+    <circle cx="490" cy="82" r="4" fill="var(--warning)"/>
+    <text x="465" y="95" text-anchor="middle" fill="var(--warning)" class="rel">Land</text>
+    <!-- Caption -->
+    <text x="350" y="260" text-anchor="middle" fill="var(--text-primary)" font-size="13" font-weight="700">Relational Database Management System</text>
+    <text x="350" y="282" text-anchor="middle" fill="var(--text-muted)" font-size="10">Tabellen zijn gekoppeld via gedeelde velden (🔑 = relatie-sleutel)</text>
+</svg>
+
+    <div class="image-caption">RDBMS: Drie gerelateerde tabellen met gedeelde sleutelvelden</div>
+</div>
+                <ul>
+                    <li>Een verzameling van <strong>tabellen</strong></li>
+                    <li>Elke tabel heeft <strong>velden</strong> (kolommen) en <strong>records</strong> (rijen)</li>
+                    <li>Er bestaan <strong>relaties</strong> tussen de tabellen — bijvoorbeeld: het merk van een auto komt zowel bij verkoopcijfers als bij autodetails voor</li>
+                </ul>
+                <p>RDBMS is de standaard manier om data in databases op te slaan.</p>
+            </div>
+
+            <div class="content-section">
+                <h2>Database structuur</h2>
+                <p>Een database bevat tabellen die aan elkaar gerelateerd zijn. Neem het voorbeeld van een autodatabase:</p>
+                <ul>
+                    <li><strong>Modellen</strong> — Model, Lengte, Breedte, Motor, Kleuren</li>
+                    <li><strong>Verkopen</strong> — Jaar, Maand, Land, Model, Omzet</li>
+                    <li><strong>Land</strong> — Land, Aantal vestigingen, Munteenheid, Aantal medewerkers</li>
+                </ul>
+                <p>De tabellen zijn gekoppeld via gedeelde velden (zoals "Model" of "Land"). Dit voorkomt dubbele data-opslag.</p>
+            </div>
+
+            <div class="content-section">
+                <h2>ICT Beheerder vs. Data Scientist</h2>
+                <p>Een ICT Beheerder wil data opgesplitst in kleine, genormaliseerde tabellen om opslagruimte te besparen:</p>
+                <ul>
+                    <li>Tabel <strong>Verkopen</strong>: 5 velden × 10.000 regels = 50.000 waarden</li>
+                    <li>Tabel <strong>Modellen</strong>: 5 velden × 50 regels = 250 waarden</li>
+                    <li>Totaal: <strong>60.250</strong> waarden</li>
+                </ul>
+                <p>Een Data Scientist wil bij voorkeur één platte tabel met alle relevante data bij elkaar:</p>
+                <ul>
+                    <li>9 velden × 10.000 regels = <strong>90.000</strong> waarden</li>
+                </ul>
+                <p>Met SQL halen we als Data Scientist de data op de manier die wij nodig hebben.</p>
+            </div>
+
+            <div class="content-section">
+                <h2>Database structuren</h2>
+                <p>Er bestaan verschillende database structuren:</p>
+                <ul>
+                    <li><strong>Hierarchical</strong> — boomstructuur (parent-child)</li>
+                    <li><strong>Network</strong> — meer flexibele verbindingen</li>
+                    <li><strong>Relational</strong> — tabellen met relaties (dit gebruiken wij)</li>
+                </ul>
+            </div>
+
+            <div class="content-section">
+                <h2>SQL</h2>
+                <p>We willen data uit een database naar voren halen. Dit doen we met <strong>Structured Query Language (SQL)</strong>.</p>
+                <p>SQL is een verzamelnaam voor verschillende subtalen: PSQL, NoSQL, SSP, MySQL, en meer.</p>
+
+                <h3>Wat kan je met SQL?</h3>
+                <ol>
+                    <li><strong>Data selecteren</strong> uit een database — dit is voor een Data Scientist het belangrijkst</li>
+                    <li>Data in een database wijzigen</li>
+                    <li>Nieuwe databases en tabellen aanmaken</li>
+                    <li>Standaard volgorde van bewerkingen klaarzetten</li>
+                    <li>Rechten op een database regelen</li>
+                </ol>
+                <p>Punt 2 t/m 5 zijn meer voor specialisten (BDM).</p>
+            </div>
+
+            <div class="content-section">
+                <h2>SQL vs Python</h2>
+                <ul>
+                    <li>SQL is <strong>alleen</strong> voor het ophalen van data uit databases</li>
+                    <li>Python kan overal voor gebruikt worden</li>
+                    <li>SQL is <strong>makkelijker</strong></li>
+                    <li>Python is <strong>flexibeler</strong></li>
+                </ul>
+            </div>
+
+            <div class="content-section">
+                <h2>Queries</h2>
+                <p>Een <strong>query</strong> is een verzameling commando's die aan een database gegeven worden. De term wordt ook gebruikt bij zoekmachines en API's.</p>
+                <p>Wij gebruiken SQL om queries te schrijven. Queries moeten handmatig worden uitgevoerd.</p>
+            </div>
+
+            <div class="key-points">
+                <div class="key-points-title">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    Kernpunten Les A
+                </div>
+                <ul>
+                    <li>Een RDBMS slaat data op in gerelateerde tabellen met velden en records</li>
+                    <li>SQL staat voor Structured Query Language en is specifiek voor database-interactie</li>
+                    <li>Als Data Scientist gebruik je SQL vooral om data te selecteren</li>
+                    <li>SQL is eenvoudiger dan Python voor data ophalen, maar Python is flexibeler</li>
+                </ul>
+            </div>
+
+            <nav class="lesson-nav">
+                <span></span>
+                <a href="les-b.html" class="nav-btn">
+                    <div>
+                        <span class="nav-label">Volgende</span>
+                        <span class="nav-title">Les B →</span>
+                    </div>
+                </a>
+            </nav>
+        </div>
+
+        <footer class="footer"><p>Data I - ADSAI &copy; 2025</p></footer>
+    </main>
+    <script src="../../../js/main.js"></script>
+</body>
+</html>

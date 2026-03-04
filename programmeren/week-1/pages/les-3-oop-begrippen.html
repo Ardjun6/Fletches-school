@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="nl" data-course="programmeren">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les 3: OOP Begrippen | Week 1 | Fletches</title>
+    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-left">
+            <a href="../index.html" class="nav-back">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                Week 1
+            </a>
+            <a href="../../../index.html" class="nav-logo">
+                <span class="nav-logo-icon">F</span>
+                <span class="nav-logo-text">Fletches</span>
+            </a>
+        </div>
+        <div class="nav-right">
+            <a href="../../index.html" class="nav-course-btn active">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                Programmeren
+            </a>
+            <a href="../../../data/index.html" class="nav-course-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+                Data
+            </a>
+            <div class="theme-toggle">
+                <button data-theme="dark" title="Dark">🌙</button>
+                <button data-theme="light" title="Light">☀️</button>
+                <button data-theme="amp" title="AMP">⚡</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <header class="top-bar">
+            <div class="breadcrumb">
+                <a href="../index.html">Week 1</a>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                <span>Les 3</span>
+            </div>
+            <div class="progress-indicator">
+                <span class="progress-text">Voortgang Week 1</span>
+                <div class="progress-bar"><div class="progress-fill" style="width: 37%"></div></div>
+            </div>
+        </header>
+
+        <div class="lesson-header">
+            <div class="lesson-meta">
+                <span class="lesson-badge">Les 3</span>
+                <span class="lesson-badge">Week 1</span>
+            </div>
+            <h1 class="lesson-page-title">OOP Begrippen</h1>
+            <p class="lesson-page-desc">Klasse, Object, Attributen en Methoden - de bouwstenen van Object Georiënteerd Programmeren.</p>
+        </div>
+
+        <div class="lesson-content-area">
+            
+            <section class="content-section">
+                <h2>De vier hoofdbegrippen van OOP</h2>
+                <p>In OOP werken we met vier belangrijke begrippen. We gebruiken het voorbeeld van een "Hond" om deze uit te leggen.</p>
+
+<div class="image-container" style="cursor:default; background: var(--bg-raised); padding: 1.5rem; text-align: center;">
+    
+<svg viewBox="0 0 700 320" xmlns="http://www.w3.org/2000/svg" style="max-width:650px; width:100%;">
+    <style>
+        text { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .title { font-size: 14px; font-weight: 700; }
+        .label { font-size: 11px; font-weight: 600; }
+        .small { font-size: 10px; }
+    </style>
+    <!-- Blueprint/Class -->
+    <rect x="220" y="10" width="260" height="120" rx="12" fill="var(--accent-surface)" stroke="var(--accent)" stroke-width="2" stroke-dasharray="6,3"/>
+    <text x="350" y="35" text-anchor="middle" fill="var(--accent)" class="title">📋 Klasse (Blauwdruk)</text>
+    <text x="350" y="58" text-anchor="middle" fill="var(--text-secondary)" class="small">Attributen: naam, leeftijd, ras</text>
+    <text x="350" y="78" text-anchor="middle" fill="var(--text-secondary)" class="small">Methoden: blaf(), eet(), slaap()</text>
+    <text x="350" y="118" text-anchor="middle" fill="var(--text-faint)" class="small" font-style="italic">Template — geen echte hond</text>
+    <!-- Arrows down -->
+    <line x1="250" y1="130" x2="130" y2="180" stroke="var(--text-ghost)" stroke-width="1.5" stroke-dasharray="4,3"/>
+    <line x1="350" y1="130" x2="350" y2="180" stroke="var(--text-ghost)" stroke-width="1.5" stroke-dasharray="4,3"/>
+    <line x1="450" y1="130" x2="570" y2="180" stroke="var(--text-ghost)" stroke-width="1.5" stroke-dasharray="4,3"/>
+    <!-- Objects -->
+    <rect x="30" y="180" width="200" height="120" rx="12" fill="var(--bg-surface)" stroke="var(--success)" stroke-width="1.5"/>
+    <text x="130" y="205" text-anchor="middle" fill="var(--success)" class="label">🐕 Bella (Object)</text>
+    <text x="130" y="228" text-anchor="middle" fill="var(--text-secondary)" class="small">naam = "Bella"</text>
+    <text x="130" y="246" text-anchor="middle" fill="var(--text-secondary)" class="small">leeftijd = 3</text>
+    <text x="130" y="264" text-anchor="middle" fill="var(--text-secondary)" class="small">ras = "Labrador"</text>
+    <text x="130" y="288" text-anchor="middle" fill="var(--text-faint)" class="small" font-style="italic">Echte hond!</text>
+    <rect x="250" y="180" width="200" height="120" rx="12" fill="var(--bg-surface)" stroke="var(--info)" stroke-width="1.5"/>
+    <text x="350" y="205" text-anchor="middle" fill="var(--info)" class="label">🐕 Kees (Object)</text>
+    <text x="350" y="228" text-anchor="middle" fill="var(--text-secondary)" class="small">naam = "Kees"</text>
+    <text x="350" y="246" text-anchor="middle" fill="var(--text-secondary)" class="small">leeftijd = 7</text>
+    <text x="350" y="264" text-anchor="middle" fill="var(--text-secondary)" class="small">ras = "Herder"</text>
+    <text x="350" y="288" text-anchor="middle" fill="var(--text-faint)" class="small" font-style="italic">Echte hond!</text>
+    <rect x="470" y="180" width="200" height="120" rx="12" fill="var(--bg-surface)" stroke="var(--warning)" stroke-width="1.5"/>
+    <text x="570" y="205" text-anchor="middle" fill="var(--warning)" class="label">🐕 Max (Object)</text>
+    <text x="570" y="228" text-anchor="middle" fill="var(--text-secondary)" class="small">naam = "Max"</text>
+    <text x="570" y="246" text-anchor="middle" fill="var(--text-secondary)" class="small">leeftijd = 1</text>
+    <text x="570" y="264" text-anchor="middle" fill="var(--text-secondary)" class="small">ras = "Poodle"</text>
+    <text x="570" y="288" text-anchor="middle" fill="var(--text-faint)" class="small" font-style="italic">Echte hond!</text>
+</svg>
+
+    <div class="image-caption">Klasse (blauwdruk) → Objecten (instanties)</div>
+</div>
+            </section>
+
+            <section class="content-section">
+                <h2>1. De Klasse (Class) — De Blauwdruk</h2>
+                <p>De klasse is het algemene concept "Hond". Het is een bouwtekening die zegt: "Elke hond in dit systeem heeft een naam, een ras en kan blaffen."</p>
+                
+                <div class="callout callout-example">
+                    <div class="callout-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="3" y1="9" x2="21" y2="9"></line>
+                            <line x1="9" y1="21" x2="9" y2="9"></line>
+                        </svg>
+                    </div>
+                    <div class="callout-content">
+                        <h4>Voorbeeld</h4>
+                        <p>Een klasse <code>Hond</code> definieert dat elke hond een naam heeft, een hoogte, een gewicht, en kan rennen of blaffen.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section">
+                <h2>2. Het Object — De Echte Hond</h2>
+                <p>Een object is een specifieke hond die je kunt aanraken. Je gebruikt de blauwdruk (Klasse) om een 'echte' hond te maken in de code.</p>
+                
+                <div class="callout callout-example">
+                    <div class="callout-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="3" y1="9" x2="21" y2="9"></line>
+                            <line x1="9" y1="21" x2="9" y2="9"></line>
+                        </svg>
+                    </div>
+                    <div class="callout-content">
+                        <h4>Voorbeeld</h4>
+                        <p>Bijvoorbeeld: een object genaamd <strong>Kees</strong> en een object genaamd <strong>Bella</strong>. Beiden zijn unieke honden, gemaakt van dezelfde blauwdruk.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section">
+                <h2>3. Attributen — De Kenmerken</h2>
+                <p>Dit zijn de eigenschappen die de hond beschrijven. Elk object heeft dezelfde soorten kenmerken zoals hoogte of gewicht.</p>
+                
+                <div class="callout callout-tip">
+                    <div class="callout-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M12 16v-4"></path>
+                            <path d="M12 8h.01"></path>
+                        </svg>
+                    </div>
+                    <div class="callout-content">
+                        <h4>Bella en Kees</h4>
+                        <ul>
+                            <li><strong>Bella:</strong> 70 cm hoog, 28 kg</li>
+                            <li><strong>Kees:</strong> 40 cm hoog, 25 kg</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section">
+                <h2>4. Methoden — Het Gedrag</h2>
+                <p>Dit zijn de acties die de hond kan uitvoeren. In code zijn dit functies die bij de hond horen.</p>
+                
+                <div class="callout callout-example">
+                    <div class="callout-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="3" y1="9" x2="21" y2="9"></line>
+                            <line x1="9" y1="21" x2="9" y2="9"></line>
+                        </svg>
+                    </div>
+                    <div class="callout-content">
+                        <h4>Voorbeeld</h4>
+                        <p>Bijvoorbeeld: <code>blaf()</code>, <code>ren()</code></p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="key-points">
+                <h3 class="key-points-title">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                    </svg>
+                    Key Points
+                </h3>
+                <ul>
+                    <li><strong>Klasse (Class)</strong> = de blauwdruk, het algemene concept</li>
+                    <li><strong>Object</strong> = een specifieke instantie van een klasse</li>
+                    <li><strong>Attributen</strong> = de eigenschappen/kenmerken van een object</li>
+                    <li><strong>Methoden</strong> = de acties/het gedrag van een object</li>
+                </ul>
+            </div>
+
+            <!-- Quiz Section -->
+            <div class="quiz-section">
+                <h3 class="quiz-title">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg>
+                    Test je kennis
+                </h3>
+
+                <div class="quiz-question" data-correct="b">
+                    <p class="question-text">1. Wat is een klasse in OOP?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-answer="a">
+                            <span class="option-marker">A</span>
+                            <span>Een specifiek object met waarden</span>
+                        </div>
+                        <div class="quiz-option" data-answer="b">
+                            <span class="option-marker">B</span>
+                            <span>Een blauwdruk of bouwtekening voor objecten</span>
+                        </div>
+                        <div class="quiz-option" data-answer="c">
+                            <span class="option-marker">C</span>
+                            <span>Een functie die iets doet</span>
+                        </div>
+                        <div class="quiz-option" data-answer="d">
+                            <span class="option-marker">D</span>
+                            <span>Een variabele met een waarde</span>
+                        </div>
+                    </div>
+                    <button class="check-answer-btn">Controleer antwoord</button>
+                    <div class="quiz-feedback correct">Correct! Een klasse is de blauwdruk die zegt welke eigenschappen en gedragingen objecten zullen hebben.</div>
+                    <div class="quiz-feedback incorrect">Helaas, het juiste antwoord is B. Een klasse is een blauwdruk of bouwtekening voor objecten.</div>
+                </div>
+
+                <div class="quiz-question" data-correct="c">
+                    <p class="question-text">2. Als Bella en Kees beide honden zijn gemaakt van dezelfde klasse Hond, wat zijn ze dan?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-answer="a">
+                            <span class="option-marker">A</span>
+                            <span>Attributen</span>
+                        </div>
+                        <div class="quiz-option" data-answer="b">
+                            <span class="option-marker">B</span>
+                            <span>Methoden</span>
+                        </div>
+                        <div class="quiz-option" data-answer="c">
+                            <span class="option-marker">C</span>
+                            <span>Objecten</span>
+                        </div>
+                        <div class="quiz-option" data-answer="d">
+                            <span class="option-marker">D</span>
+                            <span>Klassen</span>
+                        </div>
+                    </div>
+                    <button class="check-answer-btn">Controleer antwoord</button>
+                    <div class="quiz-feedback correct">Correct! Bella en Kees zijn objecten - specifieke instanties van de klasse Hond.</div>
+                    <div class="quiz-feedback incorrect">Helaas, het juiste antwoord is C. Bella en Kees zijn objecten - specifieke instanties van de klasse Hond.</div>
+                </div>
+
+                <div class="quiz-question" data-correct="a">
+                    <p class="question-text">3. De hoogte en het gewicht van een hond zijn voorbeelden van...</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-answer="a">
+                            <span class="option-marker">A</span>
+                            <span>Attributen</span>
+                        </div>
+                        <div class="quiz-option" data-answer="b">
+                            <span class="option-marker">B</span>
+                            <span>Methoden</span>
+                        </div>
+                        <div class="quiz-option" data-answer="c">
+                            <span class="option-marker">C</span>
+                            <span>Klassen</span>
+                        </div>
+                        <div class="quiz-option" data-answer="d">
+                            <span class="option-marker">D</span>
+                            <span>Constructors</span>
+                        </div>
+                    </div>
+                    <button class="check-answer-btn">Controleer antwoord</button>
+                    <div class="quiz-feedback correct">Correct! Hoogte en gewicht zijn attributen - de eigenschappen die een object beschrijven.</div>
+                    <div class="quiz-feedback incorrect">Helaas, het juiste antwoord is A. Hoogte en gewicht zijn attributen - de eigenschappen die een object beschrijven.</div>
+                </div>
+
+                <div class="quiz-question" data-correct="b">
+                    <p class="question-text">4. blaf() en ren() zijn voorbeelden van...</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-answer="a">
+                            <span class="option-marker">A</span>
+                            <span>Attributen</span>
+                        </div>
+                        <div class="quiz-option" data-answer="b">
+                            <span class="option-marker">B</span>
+                            <span>Methoden</span>
+                        </div>
+                        <div class="quiz-option" data-answer="c">
+                            <span class="option-marker">C</span>
+                            <span>Objecten</span>
+                        </div>
+                        <div class="quiz-option" data-answer="d">
+                            <span class="option-marker">D</span>
+                            <span>Klassen</span>
+                        </div>
+                    </div>
+                    <button class="check-answer-btn">Controleer antwoord</button>
+                    <div class="quiz-feedback correct">Correct! blaf() en ren() zijn methoden - de acties die een object kan uitvoeren.</div>
+                    <div class="quiz-feedback incorrect">Helaas, het juiste antwoord is B. blaf() en ren() zijn methoden - de acties die een object kan uitvoeren.</div>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="lesson-nav">
+                <a href="les-2-wat-is-oop.html" class="nav-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                    <div>
+                        <span class="nav-label">Vorige les</span>
+                        <span class="nav-title">Wat is OOP?</span>
+                    </div>
+                </a>
+                <a href="les-4-oop-code.html" class="nav-btn">
+                    <div>
+                        <span class="nav-label">Volgende les</span>
+                        <span class="nav-title">OOP in Python Code</span>
+                    </div>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </a>
+            </nav>
+        </div>
+
+        <footer class="footer">
+            <p>Programmeren II - ADSAI &copy; 2025</p>
+        </footer>
+    </main>
+
+    <script src="../../../js/main.js"></script>
+</body>
+</html>

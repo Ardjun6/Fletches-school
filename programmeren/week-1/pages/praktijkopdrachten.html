@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="nl" data-course="programmeren">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Praktijkopdrachten | Week 1 | Fletches</title>
+    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-left">
+            <a href="../index.html" class="nav-back">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                Week 1
+            </a>
+            <a href="../../../index.html" class="nav-logo">
+                <span class="nav-logo-icon">F</span>
+                <span class="nav-logo-text">Fletches</span>
+            </a>
+        </div>
+        <div class="nav-right">
+            <a href="../../index.html" class="nav-course-btn active">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                Programmeren
+            </a>
+            <a href="../../../data/index.html" class="nav-course-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+                Data
+            </a>
+            <div class="theme-toggle">
+                <button data-theme="dark" title="Dark">🌙</button>
+                <button data-theme="light" title="Light">☀️</button>
+                <button data-theme="amp" title="AMP">⚡</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <header class="top-bar">
+            <div class="breadcrumb">
+                <a href="../index.html">Week 1</a>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                <span>Praktijkopdrachten</span>
+            </div>
+            <div class="progress-indicator">
+                <span class="progress-text">Voortgang Week 1</span>
+                <div class="progress-bar"><div class="progress-fill" style="width: 100%"></div></div>
+            </div>
+        </header>
+
+        <div class="lesson-header">
+            <div class="lesson-meta">
+                <span class="lesson-badge">Praktijk</span>
+                <span class="lesson-badge">Week 1</span>
+            </div>
+            <h1 class="lesson-page-title">Praktijkopdrachten</h1>
+            <p class="lesson-page-desc">Pas je OOP-kennis toe in realistische scenario's. Deze opdrachten helpen je de concepten van klassen, objecten, attributen en methoden in de praktijk te brengen.</p>
+        </div>
+
+        <div class="lesson-content-area">
+            
+            <div class="callout callout-important">
+                <div class="callout-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="8" x2="12" y2="12"></line>
+                        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                </div>
+                <div class="callout-content">
+                    <h4>Belangrijk</h4>
+                    <p>Chatbots gebruiken mag. Gebruik het om feedback te krijgen op code of om een concept uit te leggen, niet om opdrachten te laten maken.</p>
+                </div>
+            </div>
+
+            <!-- Praktijkopdracht 1 -->
+            <div class="praktijk-card">
+                <div class="praktijk-header">
+                    <h3 class="praktijk-title">Praktijkopdracht 1: Huisdieren Kennel</h3>
+                    <p class="praktijk-goal"><strong>Doel:</strong> Een systeem bouwen dat meerdere huisdieren kan beheren met OOP concepten zoals klassen, objecten, attributen en methoden.</p>
+                </div>
+
+                <div class="praktijk-section">
+                    <h4>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                        Stappenplan
+                    </h4>
+                    <ol class="praktijk-steps">
+                        <li>Maak een klasse <code>Huisdier</code> met attributen: naam, soort (hond/kat/etc.), leeftijd, en energie_level (start op 100)</li>
+                        <li>Voeg een constructor toe die naam, soort en leeftijd accepteert</li>
+                        <li>Voeg een methode <code>speel()</code> toe die 15 energie verbruikt en een bericht teruggeeft</li>
+                        <li>Voeg een methode <code>slaap()</code> toe die 30 energie herstelt (max 100)</li>
+                        <li>Maak minimaal 3 verschillende huisdier-objecten aan</li>
+                        <li>Test alle methoden door ze aan te roepen en de output te printen</li>
+                    </ol>
+                </div>
+
+                <div class="praktijk-section">
+                    <h4>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                        Deliverable
+                    </h4>
+                    <div class="deliverable-box">
+                        <p>Een Python bestand (<code>huisdieren_kennel.py</code>) met:</p>
+                        <ul>
+                            <li>De complete Huisdier klasse</li>
+                            <li>Minimaal 3 object-instanties</li>
+                            <li>Demonstratiecode die de methoden test</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="praktijk-section">
+                    <h4>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                        Checklist
+                    </h4>
+                    <ul class="checklist">
+                        <li>Klasse heeft correcte naam en syntax</li>
+                        <li>Constructor accepteert alle vereiste parameters</li>
+                        <li>Alle attributen zijn correct gedefinieerd met self</li>
+                        <li>speel() methode vermindert energie correct</li>
+                        <li>slaap() methode herstelt energie (max 100)</li>
+                        <li>Minimaal 3 objecten aangemaakt</li>
+                        <li>Code is getest en werkt</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Praktijkopdracht 2 -->
+            <div class="praktijk-card">
+                <div class="praktijk-header">
+                    <h3 class="praktijk-title">Praktijkopdracht 2: Data Science Student Tracker</h3>
+                    <p class="praktijk-goal"><strong>Doel:</strong> Een klasse maken die Data Science studenten modelleert, gebaseerd op de ADSAI opleiding structuur uit de PowerPoints.</p>
+                </div>
+
+                <div class="praktijk-section">
+                    <h4>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                        Stappenplan
+                    </h4>
+                    <ol class="praktijk-steps">
+                        <li>Maak een klasse <code>ADSAIStudent</code></li>
+                        <li>Attributen: naam, studentnummer, behaalde_leeruitkomsten (start als lege lijst), studie_uren (start op 0)</li>
+                        <li>Methode <code>studeer(uren)</code>: voegt uren toe aan studie_uren, print een bericht</li>
+                        <li>Methode <code>behaal_leeruitkomst(nummer)</code>: voegt leeruitkomst nummer toe aan de lijst</li>
+                        <li>Methode <code>status()</code>: toont naam, totale studie-uren en aantal behaalde leeruitkomsten</li>
+                        <li>Maak 2 student-objecten en simuleer hun studieproces</li>
+                    </ol>
+                </div>
+
+                <div class="praktijk-section">
+                    <h4>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                        Deliverable
+                    </h4>
+                    <div class="deliverable-box">
+                        <p>Een Python bestand (<code>adsai_tracker.py</code>) met:</p>
+                        <ul>
+                            <li>De complete ADSAIStudent klasse</li>
+                            <li>2 student-objecten met gesimuleerde studieactiviteiten</li>
+                            <li>Output die de voortgang van beide studenten toont</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="praktijk-section">
+                    <h4>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                        Checklist
+                    </h4>
+                    <ul class="checklist">
+                        <li>Klasse heeft alle vereiste attributen</li>
+                        <li>studeer() methode werkt correct</li>
+                        <li>behaal_leeruitkomst() voegt toe aan lijst</li>
+                        <li>status() toont alle relevante informatie</li>
+                        <li>2 objecten aangemaakt met testdata</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Praktijkopdracht 3 -->
+            <div class="praktijk-card">
+                <div class="praktijk-header">
+                    <h3 class="praktijk-title">Praktijkopdracht 3: Energie Systeem Uitbreiden</h3>
+                    <p class="praktijk-goal"><strong>Doel:</strong> De Hond-klasse uit de les uitbreiden met extra functionaliteit, gebaseerd op het energie-systeem concept.</p>
+                </div>
+
+                <div class="praktijk-section">
+                    <h4>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                        Stappenplan
+                    </h4>
+                    <ol class="praktijk-steps">
+                        <li>Begin met de Hond-klasse uit de les (met naam, hoogte, gewicht, energie_level en ren() methode)</li>
+                        <li>Voeg attribuut <code>honger_level</code> toe (start op 0, max 100)</li>
+                        <li>Pas <code>ren()</code> aan: verhoogt ook honger_level met 10</li>
+                        <li>Voeg methode <code>eet()</code> toe: verlaagt honger_level met 30 (min 0) en herstelt 10 energie</li>
+                        <li>Voeg methode <code>status()</code> toe: toont naam, energie_level en honger_level</li>
+                        <li>Test met Bella en Kees: laat ze rennen, eten, en toon hun status</li>
+                    </ol>
+                </div>
+
+                <div class="praktijk-section">
+                    <h4>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                        Deliverable
+                    </h4>
+                    <div class="deliverable-box">
+                        <p>Een Python bestand (<code>hond_uitgebreid.py</code>) met:</p>
+                        <ul>
+                            <li>De uitgebreide Hond klasse</li>
+                            <li>Bella en Kees objecten (70cm/28kg en 40cm/25kg)</li>
+                            <li>Simulatie die rennen en eten combineert</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="praktijk-section">
+                    <h4>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                        Checklist
+                    </h4>
+                    <ul class="checklist">
+                        <li>honger_level attribuut correct geïmplementeerd</li>
+                        <li>ren() beïnvloedt zowel energie als honger</li>
+                        <li>eet() werkt correct met grenzen (min 0)</li>
+                        <li>status() toont alle relevante info</li>
+                        <li>Bella en Kees hebben correcte waarden</li>
+                        <li>Simulatie demonstreert alle functionaliteit</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Praktijkopdracht 4 -->
+            <div class="praktijk-card">
+                <div class="praktijk-header">
+                    <h3 class="praktijk-title">Praktijkopdracht 4: OOP Begrippen Documentatie</h3>
+                    <p class="praktijk-goal"><strong>Doel:</strong> Een eigen documentatie maken van OOP begrippen, gebruikmakend van de definities uit de les.</p>
+                </div>
+
+                <div class="praktijk-section">
+                    <h4>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                        Stappenplan
+                    </h4>
+                    <ol class="praktijk-steps">
+                        <li>Maak een Python bestand met docstrings die elk OOP begrip uitleggen</li>
+                        <li>Voor elk begrip (Klasse, Object, Attribuut, Methode, Constructor): schrijf een definitie en een codevoorbeeld</li>
+                        <li>Gebruik de definities uit de les als basis</li>
+                        <li>Bedenk voor elk begrip een eigen voorbeeld (niet de Hond-klasse)</li>
+                        <li>Voeg comments toe die uitleggen wat elke regel doet</li>
+                    </ol>
+                </div>
+
+                <div class="praktijk-section">
+                    <h4>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                        Deliverable
+                    </h4>
+                    <div class="deliverable-box">
+                        <p>Een Python bestand (<code>oop_documentatie.py</code>) met:</p>
+                        <ul>
+                            <li>Docstrings voor elk OOP begrip</li>
+                            <li>Een eigen voorbeeld-klasse (niet Hond)</li>
+                            <li>Uitgebreide comments</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="praktijk-section">
+                    <h4>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                        Checklist
+                    </h4>
+                    <ul class="checklist">
+                        <li>Alle 5 begrippen zijn gedocumenteerd</li>
+                        <li>Definities zijn correct (gebaseerd op les)</li>
+                        <li>Eigen voorbeeld-klasse is origineel</li>
+                        <li>Comments zijn duidelijk en behulpzaam</li>
+                        <li>Code is uitvoerbaar zonder errors</li>
+                    </ul>
+                </div>
+            </div>
+
+            <nav class="lesson-nav">
+                <a href="oefenopdrachten.html" class="nav-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    <div><span class="nav-label">Vorige</span><span class="nav-title">Oefenopdrachten</span></div>
+                </a>
+                <a href="../index.html" class="nav-btn">
+                    <div><span class="nav-label">Terug naar</span><span class="nav-title">Week 1 Overzicht</span></div>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
+            </nav>
+        </div>
+
+        <footer class="footer"><p>Programmeren II - ADSAI &copy; 2025</p></footer>
+    </main>
+
+    <script src="../../../js/main.js"></script>
+</body>
+</html>

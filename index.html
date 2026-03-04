@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fletches - Leerplatform</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .landing-container { text-align: center; padding: 2rem; max-width: 900px; width: 100%; animation: fadeUp 0.6s ease-out; }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .logo-large { display: inline-flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; }
+        .logo-large .icon { width: 56px; height: 56px; background: var(--accent-gradient); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.75rem; color: white; box-shadow: 0 0 30px var(--accent-glow); }
+        .logo-large .text { font-size: 2.25rem; font-weight: 800; color: var(--text-primary); }
+        .landing-subtitle { font-size: 1rem; color: var(--text-muted); margin-bottom: 2.5rem; }
+        
+        .landing-theme { display: flex; justify-content: center; margin-bottom: 2rem; }
+        
+        .landing-hero-img {
+            width: 100%; max-height: 260px; object-fit: cover;
+            border-radius: var(--radius-2xl); margin-bottom: 2rem;
+            border: 1px solid var(--border); box-shadow: var(--shadow-card);
+        }
+        
+        .course-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+        .course-card {
+            position: relative; background: var(--bg-surface); border: 1px solid var(--border);
+            border-radius: var(--radius-2xl); padding: 2.25rem 1.75rem; text-decoration: none; color: inherit;
+            transition: all 0.3s ease; overflow: hidden;
+        }
+        .course-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; border-radius: var(--radius-2xl) var(--radius-2xl) 0 0; transition: height 0.3s; }
+        .course-card.prog::before { background: var(--prog-gradient); }
+        .course-card.data::before { background: var(--data-gradient); }
+        .course-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+        .course-card:hover::before { height: 5px; }
+        
+        .card-icon { width: 52px; height: 52px; border-radius: var(--radius-xl); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; }
+        .course-card.prog .card-icon { background: var(--prog-surface); border: 1px solid var(--prog-border); color: var(--prog-accent); }
+        .course-card.data .card-icon { background: var(--data-surface); border: 1px solid var(--data-border); color: var(--data-accent); }
+        
+        .card-title { font-size: 1.35rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.6rem; }
+        .card-description { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.25rem; }
+        
+        .card-badge { display: inline-block; padding: 0.3rem 0.85rem; border-radius: 2rem; font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+        .course-card.prog .card-badge { background: var(--prog-surface); color: var(--prog-accent); border: 1px solid var(--prog-border); }
+        .course-card.data .card-badge { background: var(--data-surface); color: var(--data-accent); border: 1px solid var(--data-border); }
+        
+        .card-arrow { position: absolute; top: 1.75rem; right: 1.75rem; color: var(--text-ghost); transition: all 0.3s; }
+        .course-card:hover .card-arrow { color: var(--text-muted); transform: translateX(3px); }
+        
+        .footer-text { margin-top: 2.5rem; font-size: 0.78rem; color: var(--text-faint); }
+        
+        @media (max-width: 640px) {
+            .course-cards { grid-template-columns: 1fr; gap: 1rem; }
+            .logo-large .text { font-size: 1.75rem; }
+            .logo-large .icon { width: 44px; height: 44px; font-size: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="landing-container">
+        <div class="logo-large">
+            <span class="icon">F</span>
+            <span class="text">Fletches</span>
+        </div>
+        <p class="landing-subtitle">Kies je vak om te beginnen</p>
+
+        <div class="landing-theme">
+            <div class="theme-toggle">
+                <button data-theme="dark" title="Dark">🌙</button>
+                <button data-theme="light" title="Light">☀️</button>
+                <button data-theme="amp" title="AMP">⚡</button>
+            </div>
+        </div>
+
+        <img src="assets/hero.png" alt="Fletches leerplatform" class="landing-hero-img">
+
+        <div class="course-cards">
+            <a href="programmeren/index.html" class="course-card prog">
+                <span class="card-arrow">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
+                <div class="card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                </div>
+                <h2 class="card-title">Programmeren II</h2>
+                <p class="card-description">Object Oriented Programming, Data Structures, Algorithms, KNN, Decision Trees &amp; Design Patterns</p>
+                <span class="card-badge">17 weken</span>
+            </a>
+
+            <a href="data/index.html" class="course-card data">
+                <span class="card-arrow">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
+                <div class="card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+                </div>
+                <h2 class="card-title">Data I</h2>
+                <p class="card-description">SQL, Databases, Machine Learning, Regressie, Classificatie &amp; Pre-processing</p>
+                <span class="card-badge">17 weken</span>
+            </a>
+        </div>
+
+        <p class="footer-text">ADSAI &copy; 2025</p>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

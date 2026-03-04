@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="nl" data-course="programmeren">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOP &amp; Data Preprocessing | Week 2 | Fletches</title>
+    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-left">
+            <a href="../index.html" class="nav-back">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                Week 2
+            </a>
+            <a href="../../../index.html" class="nav-logo">
+                <span class="nav-logo-icon">F</span>
+                <span class="nav-logo-text">Fletches</span>
+            </a>
+        </div>
+        <div class="nav-right">
+            <a href="../../index.html" class="nav-course-btn active">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                Programmeren
+            </a>
+            <a href="../../../data/index.html" class="nav-course-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+                Data
+            </a>
+            <div class="theme-toggle">
+                <button data-theme="dark" title="Dark">🌙</button>
+                <button data-theme="light" title="Light">☀️</button>
+                <button data-theme="amp" title="AMP">⚡</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <header class="top-bar">
+            <div class="breadcrumb">
+                <a href="../index.html" style="color:var(--neutral-400);text-decoration:none">Week 2</a>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                <span>OOP &amp; Data Preprocessing</span>
+            </div>
+        </header>
+
+        <div class="lesson-header">
+            <div class="lesson-meta">
+                <span class="lesson-badge">Les A</span>
+                <span class="lesson-badge">Week 2</span>
+            </div>
+            <h1 class="lesson-page-title">OOP &amp; Data Preprocessing</h1>
+        </div>
+
+        <div class="lesson-content-area">
+
+            <section class="content-section">
+                <h2>Waarom OOP?</h2>
+                <ul>
+                    <li><strong>Herbruikbaar:</strong> Vermindert repetitieve code</li>
+                    <li><strong>Structuur:</strong> Geeft je code een duidelijke organisatie</li>
+                    <li><strong>Representatie:</strong> Representeert entiteiten (dingen) in de echte wereld</li>
+                </ul>
+                <p>Boek: <em>Problem Solving with Algorithms and Data Structures using Python</em> (Brad Miller &amp; David Ranum)</p>
+            </section>
+            
+            <section class="content-section">
+                <h2>Voorbeeld: Hond class</h2>
+                <div class="code-block">
+                    <div class="code-header"><span>Python</span></div>
+                    <pre><code>class Hond:
+    def __init__(self, naam, hoogte, gewicht):
+        self.naam = naam
+        self.hoogte = hoogte
+        self.gewicht = gewicht
+        self.energie_level = 100
+
+    def ren(self):
+        if self.energie_level >= 20:
+            self.energie_level -= 20
+            return f"{self.naam} rent vrolijk! Energie: {self.energie_level}"
+        return f"{self.naam} is te moe om te rennen."
+
+hond_bella = Hond("Bella", 70, 28)
+hond_kees = Hond("Kees", 40, 25)</code></pre>
+                </div>
+            </section>
+
+            <section class="content-section">
+                <h2>Data Pre-processing met OOP</h2>
+                <p>Bij het verwerken van missende waarden doorloop je typisch deze stappen:</p>
+
+<div class="image-container" style="cursor:default; background: var(--bg-raised); padding: 1.5rem; text-align: center;">
+    
+<svg viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg" style="max-width:560px; width:100%;">
+    <style>text { font-family: 'Plus Jakarta Sans', sans-serif; } .t { font-size: 13px; font-weight: 700; } .s { font-size: 10px; } .l { font-size: 11px; font-weight: 600; }</style>
+    <!-- Dirty data -->
+    <rect x="20" y="30" width="140" height="190" rx="10" fill="var(--bg-surface)" stroke="var(--error)" stroke-width="1.5"/>
+    <text x="90" y="55" text-anchor="middle" fill="var(--error)" class="t">Ruwe Data</text>
+    <text x="40" y="80" fill="var(--text-secondary)" class="s">NaN, None, ???</text>
+    <text x="40" y="100" fill="var(--text-secondary)" class="s">Dubbele rijen</text>
+    <text x="40" y="120" fill="var(--text-secondary)" class="s">Verkeerde types</text>
+    <text x="40" y="140" fill="var(--text-secondary)" class="s">Outliers</text>
+    <text x="40" y="160" fill="var(--text-muted)" class="s" font-style="italic">😵 Onbruikbaar</text>
+    <!-- Arrow -->
+    <line x1="170" y1="125" x2="220" y2="125" stroke="var(--accent)" stroke-width="2"/>
+    <polygon points="220,125 212,119 212,131" fill="var(--accent)"/>
+    <!-- DataCleaner class -->
+    <rect x="225" y="15" width="180" height="220" rx="12" fill="var(--accent-surface)" stroke="var(--accent)" stroke-width="2"/>
+    <text x="315" y="42" text-anchor="middle" fill="var(--accent)" class="t">class DataCleaner</text>
+    <line x1="240" y1="52" x2="390" y2="52" stroke="var(--accent)" stroke-width="0.5" opacity="0.3"/>
+    <text x="240" y="75" fill="var(--text-primary)" class="s" font-weight="600">Attributen:</text>
+    <text x="250" y="95" fill="var(--text-secondary)" class="s">self.data</text>
+    <text x="250" y="112" fill="var(--text-secondary)" class="s">self.cleaned</text>
+    <text x="240" y="138" fill="var(--text-primary)" class="s" font-weight="600">Methoden:</text>
+    <text x="250" y="158" fill="var(--text-secondary)" class="s">remove_nulls()</text>
+    <text x="250" y="175" fill="var(--text-secondary)" class="s">remove_duplicates()</text>
+    <text x="250" y="192" fill="var(--text-secondary)" class="s">fix_types()</text>
+    <text x="250" y="209" fill="var(--text-secondary)" class="s">remove_outliers()</text>
+    <!-- Arrow -->
+    <line x1="415" y1="125" x2="465" y2="125" stroke="var(--success)" stroke-width="2"/>
+    <polygon points="465,125 457,119 457,131" fill="var(--success)"/>
+    <!-- Clean data -->
+    <rect x="470" y="50" width="110" height="150" rx="10" fill="var(--bg-surface)" stroke="var(--success)" stroke-width="1.5"/>
+    <text x="525" y="80" text-anchor="middle" fill="var(--success)" class="t">Schone Data</text>
+    <text x="490" y="105" fill="var(--text-secondary)" class="s">✓ Geen nulls</text>
+    <text x="490" y="125" fill="var(--text-secondary)" class="s">✓ Unieke rijen</text>
+    <text x="490" y="145" fill="var(--text-secondary)" class="s">✓ Juiste types</text>
+    <text x="490" y="170" fill="var(--success)" class="s">😊 Analyseerbaar</text>
+</svg>
+
+    <div class="image-caption">OOP in Data Science: een DataCleaner klasse verwerkt ruwe data naar schone data</div>
+</div>
+                <ol>
+                    <li>Missende waarden <strong>analyseren</strong></li>
+                    <li>Missende waarden <strong>visualiseren</strong></li>
+                    <li>Missende waarden <strong>verwijderen</strong></li>
+                    <li>Missende waarden <strong>invullen</strong></li>
+                </ol>
+                <h3>Voordelen van OOP bij Data Pre-processing</h3>
+                <p><strong>1. Bundeling van Data en Methoden:</strong> Maak een <code>DataCleaner</code> klasse met methoden als <code>.analyseer_missende_waarden()</code>, <code>.visualiseer_missende_waarden()</code>, <code>.verwijder_missende_waarden()</code>, <code>.vul_missende_waarden(methode='mean')</code>. Het DataFrame is opgeslagen in de constructor.</p>
+                <p><strong>2. Herbruikbaarheid:</strong> Een goede klasse kun je in elk volgend project importeren en direct gebruiken op nieuwe datasets.</p>
+            </section>
+
+            <nav class="lesson-nav">
+                <a href="../index.html" class="nav-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    <div><span class="nav-label">Terug naar</span><span class="nav-title">Overzicht</span></div>
+                </a>
+                <a href="les-b.html" class="nav-btn">
+                    <div><span class="nav-label">Volgende</span><span class="nav-title">Les B</span></div>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
+            </nav>
+        </div>
+
+        <footer class="footer"><p>Programmeren II - ADSAI &copy; 2025</p></footer>
+    </main>
+    <script src="../../../js/main.js"></script>
+</body>
+</html>

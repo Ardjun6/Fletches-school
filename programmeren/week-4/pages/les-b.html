@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="nl" data-course="programmeren">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KNN Blueprint &amp; OOP Implementatie | Week 4 | Fletches</title>
+    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-left">
+            <a href="../index.html" class="nav-back">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                Week 4
+            </a>
+            <a href="../../../index.html" class="nav-logo">
+                <span class="nav-logo-icon">F</span>
+                <span class="nav-logo-text">Fletches</span>
+            </a>
+        </div>
+        <div class="nav-right">
+            <a href="../../index.html" class="nav-course-btn active">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                Programmeren
+            </a>
+            <a href="../../../data/index.html" class="nav-course-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+                Data
+            </a>
+            <div class="theme-toggle">
+                <button data-theme="dark" title="Dark">🌙</button>
+                <button data-theme="light" title="Light">☀️</button>
+                <button data-theme="amp" title="AMP">⚡</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <header class="top-bar">
+            <div class="breadcrumb">
+                <a href="../index.html" style="color:var(--neutral-400);text-decoration:none">Week 4</a>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                <span>KNN Blueprint &amp; OOP Implementatie</span>
+            </div>
+        </header>
+
+        <div class="lesson-header">
+            <div class="lesson-meta">
+                <span class="lesson-badge">Les B</span>
+                <span class="lesson-badge">Week 4</span>
+            </div>
+            <h1 class="lesson-page-title">KNN Blueprint &amp; OOP Implementatie</h1>
+        </div>
+
+        <div class="lesson-content-area">
+
+            <section class="content-section">
+                <h2>De KNN Blueprint (tweetallen, 10 min)</h2>
+                <div class="callout callout-tip">
+                    <div class="callout-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg></div>
+                    <div class="callout-content"><h4>Opdracht</h4><p>Bouw het werkend KNN-algoritme om naar een klasse die werkt als Scikit-Learn.</p></div>
+
+<div class="image-container" style="cursor:default; background: var(--bg-raised); padding: 1.5rem; text-align: center;">
+    
+<svg viewBox="0 0 550 220" xmlns="http://www.w3.org/2000/svg" style="max-width:520px; width:100%;">
+    <style>text { font-family: 'Plus Jakarta Sans', sans-serif; } .t { font-size: 12px; font-weight: 700; } .s { font-size: 10px; } .code { font-family: 'JetBrains Mono', monospace; font-size: 10px; }</style>
+    <rect x="20" y="10" width="510" height="200" rx="12" fill="var(--accent-surface)" stroke="var(--accent)" stroke-width="2" stroke-dasharray="6,3"/>
+    <text x="275" y="38" text-anchor="middle" fill="var(--accent)" class="t">class KNNClassifier — OOP Blueprint</text>
+    <line x1="40" y1="50" x2="510" y2="50" stroke="var(--accent)" stroke-width="0.5" opacity="0.3"/>
+    <!-- Attributes -->
+    <rect x="40" y="62" width="220" height="130" rx="8" fill="var(--bg-surface)" stroke="var(--border)"/>
+    <text x="150" y="85" text-anchor="middle" fill="var(--text-primary)" class="t">Attributen</text>
+    <text x="55" y="108" fill="var(--text-secondary)" class="code">self.k = 3</text>
+    <text x="55" y="128" fill="var(--text-secondary)" class="code">self.X_train = None</text>
+    <text x="55" y="148" fill="var(--text-secondary)" class="code">self.y_train = None</text>
+    <text x="55" y="168" fill="var(--text-secondary)" class="code">self.metric = "euclidean"</text>
+    <!-- Methods -->
+    <rect x="280" y="62" width="230" height="130" rx="8" fill="var(--bg-surface)" stroke="var(--border)"/>
+    <text x="395" y="85" text-anchor="middle" fill="var(--text-primary)" class="t">Methoden</text>
+    <text x="295" y="108" fill="var(--text-secondary)" class="code">fit(X, y)</text>
+    <text x="295" y="128" fill="var(--text-secondary)" class="code">predict(X_new)</text>
+    <text x="295" y="148" fill="var(--text-secondary)" class="code">_calculate_distance()</text>
+    <text x="295" y="168" fill="var(--text-secondary)" class="code">score(X_test, y_test)</text>
+</svg>
+
+    <div class="image-caption">KNN als OOP klasse: attributen voor configuratie, methoden voor het algoritme</div>
+</div>
+                </div>
+                <p><strong>Blueprint bevat:</strong></p>
+                <ul>
+                    <li><strong>Attributen:</strong> Welke variabelen heeft de klasse in de constructor?</li>
+                    <li><strong>Methoden:</strong> Welke methoden? Wat doet elke methode? Input en output?</li>
+                    <li><strong>Gebruik:</strong> Hoe gebruik je de klasse? Geef voorbeeldcode.</li>
+                </ul>
+            </section>
+            <section class="content-section">
+                <h2>Aan het werk</h2>
+                <p>Implementatie van KNN in OOP: <strong>Opdracht 5 en 6</strong> van het KNN notebook.</p>
+            </section>
+            <section class="content-section">
+                <h2>Toetsmoment 1</h2>
+                <p><strong>20% van eindcijfer</strong> — 45 min — Remindo</p>
+                <ul>
+                    <li>LU 1: OOP basisbeginselen toepassen op DS vraagstukken (10 punten)</li>
+                    <li>LU 2: Eenvoudig DS algoritme definiëren met OOP (10 punten)</li>
+                </ul>
+            </section>
+
+            <nav class="lesson-nav">
+                <a href="les-a.html" class="nav-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    <div><span class="nav-label">Vorige</span><span class="nav-title">Les A</span></div>
+                </a>
+                <a href="samenvatting.html" class="nav-btn">
+                    <div><span class="nav-label">Volgende</span><span class="nav-title">Samenvatting</span></div>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
+            </nav>
+        </div>
+
+        <footer class="footer"><p>Programmeren II - ADSAI &copy; 2025</p></footer>
+    </main>
+    <script src="../../../js/main.js"></script>
+</body>
+</html>
