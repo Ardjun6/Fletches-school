@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initImageModal();
     
     // Quiz functionality
+    initQuizModes();
     initQuizzes();
     
     // Progress tracking
@@ -98,6 +99,26 @@ function initImageModal() {
 /* ============================================
    QUIZ FUNCTIONALITY
    ============================================ */
+
+
+function initQuizModes() {
+    document.querySelectorAll('.quiz-mode-selector').forEach(selector => {
+        const buttons = selector.querySelectorAll('.quiz-mode-btn');
+        const container = selector.closest('.content-section, .quiz-section, .lesson-content-area') || document;
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                const mode = button.dataset.mode;
+
+                buttons.forEach(btn => btn.classList.toggle('active', btn === button));
+
+                container.querySelectorAll('.quiz-mode-panel').forEach(panel => {
+                    panel.classList.toggle('active', panel.dataset.mode === mode);
+                });
+            });
+        });
+    });
+}
 
 function initQuizzes() {
     document.querySelectorAll('.quiz-question').forEach(question => {

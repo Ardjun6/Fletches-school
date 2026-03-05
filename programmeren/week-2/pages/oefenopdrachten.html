@@ -71,15 +71,254 @@
 
             
             <section class="content-section">
-                <h2>Quiz & Open vragen (Makkelijk / Normaal / Moeilijk)</h2>
-                <div class="exercise-card"><div class="exercise-header"><div class="exercise-number">Q1</div><h3 class="exercise-title">Quiz (Makkelijk)</h3><span class="exercise-difficulty difficulty-easy">Makkelijk</span></div><p>Welke methode gebruikt Python als constructor? <strong>Antwoord: __init__</strong></p></div>
-                <div class="exercise-card"><div class="exercise-header"><div class="exercise-number">Q2</div><h3 class="exercise-title">Open vraag (Normaal)</h3><span class="exercise-difficulty difficulty-medium">Normaal</span></div><pre><code>class DataCleaner:
-    def analyseer_missende_waarden(self):
-        return self.df.isnull().sum()</code></pre></div>
-                <div class="exercise-card"><div class="exercise-header"><div class="exercise-number">Q3</div><h3 class="exercise-title">Open vraag (Moeilijk)</h3><span class="exercise-difficulty difficulty-hard">Moeilijk</span></div><pre><code>def vul_missende_waarden(self, methode='mean'):
-    if methode == 'mean':
-        self.df = self.df.fillna(self.df.mean(numeric_only=True))</code></pre></div>
-            </section>
+<h2>Quiz per niveau</h2>
+<p>Kies een niveau. Beantwoord elke vraag en klik op <em>Controleer antwoord</em> om het antwoord en feedback te zien.</p>
+<div class="quiz-mode-selector">
+<button class="quiz-mode-btn active" data-mode="easy">Makkelijk</button>
+<button class="quiz-mode-btn" data-mode="normal">Normaal</button>
+<button class="quiz-mode-btn" data-mode="hard">Moeilijk</button>
+</div>
+<div class="quiz-mode-panel active" data-mode="easy"><h3>Makkelijk (10 vragen)</h3><div class="quiz-question" data-correct="b">
+<p class="question-text">1. Welk sleutelwoord gebruik je om een class te maken in Python?</p>
+<div class="quiz-options"><div class="quiz-option" data-answer="a"><span class="option-marker">A</span><span>def</span></div>
+<div class="quiz-option" data-answer="b"><span class="option-marker">B</span><span>class</span></div>
+<div class="quiz-option" data-answer="c"><span class="option-marker">C</span><span>object</span></div></div>
+<button class="check-answer-btn">Controleer antwoord</button>
+<div class="quiz-feedback">Correct antwoord: class.</div>
+</div>
+<div class="quiz-question" data-correct="c">
+<p class="question-text">2. Wat is de constructor van een Python class?</p>
+<div class="quiz-options"><div class="quiz-option" data-answer="a"><span class="option-marker">A</span><span>__start__</span></div>
+<div class="quiz-option" data-answer="b"><span class="option-marker">B</span><span>__new__</span></div>
+<div class="quiz-option" data-answer="c"><span class="option-marker">C</span><span>__init__</span></div></div>
+<button class="check-answer-btn">Controleer antwoord</button>
+<div class="quiz-feedback">Correct antwoord: __init__.</div>
+</div>
+<div class="quiz-question" data-correct="b">
+<p class="question-text">3. Waarvoor gebruik je self in een methode?</p>
+<div class="quiz-options"><div class="quiz-option" data-answer="a"><span class="option-marker">A</span><span>Voor class-attributen</span></div>
+<div class="quiz-option" data-answer="b"><span class="option-marker">B</span><span>Voor het huidige object</span></div>
+<div class="quiz-option" data-answer="c"><span class="option-marker">C</span><span>Voor imports</span></div></div>
+<button class="check-answer-btn">Controleer antwoord</button>
+<div class="quiz-feedback">self verwijst naar de huidige instantie.</div>
+</div>
+<div class="quiz-question" data-correct="b">
+<p class="question-text">4. Welke datastructuur werkt LIFO?</p>
+<div class="quiz-options"><div class="quiz-option" data-answer="a"><span class="option-marker">A</span><span>Queue</span></div>
+<div class="quiz-option" data-answer="b"><span class="option-marker">B</span><span>Stack</span></div>
+<div class="quiz-option" data-answer="c"><span class="option-marker">C</span><span>Linked list</span></div></div>
+<button class="check-answer-btn">Controleer antwoord</button>
+<div class="quiz-feedback">Een stack is Last In First Out.</div>
+</div>
+<div class="quiz-question" data-correct="b">
+<p class="question-text">5. Welk teken gebruik je voor attributen van een object?</p>
+<div class="quiz-options"><div class="quiz-option" data-answer="a"><span class="option-marker">A</span><span>:</span></div>
+<div class="quiz-option" data-answer="b"><span class="option-marker">B</span><span>.</span></div>
+<div class="quiz-option" data-answer="c"><span class="option-marker">C</span><span>#</span></div></div>
+<button class="check-answer-btn">Controleer antwoord</button>
+<div class="quiz-feedback">Met een punt roep je attributen en methoden aan.</div>
+</div>
+<div class="quiz-question" data-correct="b">
+<p class="question-text">6. Wat doet len(lijst)?</p>
+<div class="quiz-options"><div class="quiz-option" data-answer="a"><span class="option-marker">A</span><span>Sorteert de lijst</span></div>
+<div class="quiz-option" data-answer="b"><span class="option-marker">B</span><span>Geeft lengte terug</span></div>
+<div class="quiz-option" data-answer="c"><span class="option-marker">C</span><span>Verwijdert items</span></div></div>
+<button class="check-answer-btn">Controleer antwoord</button>
+<div class="quiz-feedback">len geeft het aantal elementen.</div>
+</div>
+<div class="quiz-question" data-correct="c">
+<p class="question-text">7. Welke structuur herhaalt zolang een conditie waar is?</p>
+<div class="quiz-options"><div class="quiz-option" data-answer="a"><span class="option-marker">A</span><span>if</span></div>
+<div class="quiz-option" data-answer="b"><span class="option-marker">B</span><span>for</span></div>
+<div class="quiz-option" data-answer="c"><span class="option-marker">C</span><span>while</span></div></div>
+<button class="check-answer-btn">Controleer antwoord</button>
+<div class="quiz-feedback">while herhaalt op basis van een conditie.</div>
+</div>
+<div class="quiz-question" data-correct="a">
+<p class="question-text">8. Wat is encapsulation?</p>
+<div class="quiz-options"><div class="quiz-option" data-answer="a"><span class="option-marker">A</span><span>Data en gedrag bundelen</span></div>
+<div class="quiz-option" data-answer="b"><span class="option-marker">B</span><span>Erfenis gebruiken</span></div>
+<div class="quiz-option" data-answer="c"><span class="option-marker">C</span><span>Imports groeperen</span></div></div>
+<button class="check-answer-btn">Controleer antwoord</button>
+<div class="quiz-feedback">Encapsulation bundelt data en methoden in een object.</div>
+</div>
+<div class="quiz-question" data-correct="a">
+<p class="question-text">9. Welke methode gebruik je vaak om een object leesbaar te printen?</p>
+<div class="quiz-options"><div class="quiz-option" data-answer="a"><span class="option-marker">A</span><span>__repr__</span></div>
+<div class="quiz-option" data-answer="b"><span class="option-marker">B</span><span>__len__</span></div>
+<div class="quiz-option" data-answer="c"><span class="option-marker">C</span><span>__call__</span></div></div>
+<button class="check-answer-btn">Controleer antwoord</button>
+<div class="quiz-feedback">__repr__ of __str__ maakt output leesbaar.</div>
+</div>
+<div class="quiz-question" data-correct="a">
+<p class="question-text">10. Wat is een instance attribute?</p>
+<div class="quiz-options"><div class="quiz-option" data-answer="a"><span class="option-marker">A</span><span>Attribuut per object</span></div>
+<div class="quiz-option" data-answer="b"><span class="option-marker">B</span><span>Attribuut voor alle objecten</span></div>
+<div class="quiz-option" data-answer="c"><span class="option-marker">C</span><span>Alleen in functies</span></div></div>
+<button class="check-answer-btn">Controleer antwoord</button>
+<div class="quiz-feedback">Instance-attributen horen bij één object.</div>
+</div></div>
+<div class="quiz-mode-panel" data-mode="normal"><h3>Normaal (10 vragen)</h3><div class="quiz-question" data-correct="b">
+<p class="question-text">1. Wat is het verschil tussen class- en instance-attributen?</p>
+<div class="quiz-options"><div class="quiz-option" data-answer="a"><span class="option-marker">A</span><span>Geen verschil</span></div>
+<div class="quiz-option" data-answer="b"><span class="option-marker">B</span><span>Class gedeeld, instance per object</span></div>
+<div class="quiz-option" data-answer="c"><span class="option-marker">C</span><span>Instance gedeeld, class per object</span></div></div>
+<button class="check-answer-btn">Controleer antwoord</button>
+<div class="quiz-feedback">Class-attributen zijn gedeeld door alle instanties.</div>
+</div>
+<div class="quiz-question" data-correct="a">
+<p class="question-text">2. Welke structuur is het snelst voor append en pop aan het einde?</p>
+<div class="quiz-options"><div class="quiz-option" data-answer="a"><span class="option-marker">A</span><span>Python list</span></div>
+<div class="quiz-option" data-answer="b"><span class="option-marker">B</span><span>Tuple</span></div>
+<div class="quiz-option" data-answer="c"><span class="option-marker">C</span><span>String</span></div></div>
+<button class="check-answer-btn">Controleer antwoord</button>
+<div class="quiz-feedback">Een list is hier geschikt.</div>
+</div>
+<div class="quiz-question" data-correct="b">
+<p class="question-text">3. Wat doet super() in een subclass?</p>
+<div class="quiz-options"><div class="quiz-option" data-answer="a"><span class="option-marker">A</span><span>Maakt private variabelen</span></div>
+<div class="quiz-option" data-answer="b"><span class="option-marker">B</span><span>Roept parent class functionaliteit aan</span></div>
+<div class="quiz-option" data-answer="c"><span class="option-marker">C</span><span>Verwijdert parent class</span></div></div>
+<button class="check-answer-btn">Controleer antwoord</button>
+<div class="quiz-feedback">super() gebruikt code uit de parent class.</div>
+</div>
+<div class="quiz-question" data-correct="a">
+<p class="question-text">4. Wanneer gebruik je polymorfisme?</p>
+<div class="quiz-options"><div class="quiz-option" data-answer="a"><span class="option-marker">A</span><span>Verschillende classes met dezelfde methode-interface</span></div>
+<div class="quiz-option" data-answer="b"><span class="option-marker">B</span><span>Alleen bij SQL</span></div>
+<div class="quiz-option" data-answer="c"><span class="option-marker">C</span><span>Alleen bij loops</span></div></div>
+<button class="check-answer-btn">Controleer antwoord</button>
+<div class="quiz-feedback">Polymorfisme: zelfde methode, verschillend gedrag.</div>
+</div>
+<div class="quiz-question" data-correct="a">
+<p class="question-text">5. Wat is een linked list node meestal?</p>
+<div class="quiz-options"><div class="quiz-option" data-answer="a"><span class="option-marker">A</span><span>value + next</span></div>
+<div class="quiz-option" data-answer="b"><span class="option-marker">B</span><span>alleen index</span></div>
+<div class="quiz-option" data-answer="c"><span class="option-marker">C</span><span>alleen value</span></div></div>
+<button class="check-answer-btn">Controleer antwoord</button>
+<div class="quiz-feedback">Minstens data en verwijzing naar volgende node.</div>
+</div>
+<div class="quiz-question" data-correct="b">
+<p class="question-text">6. Waarom gebruik je type hints?</p>
+<div class="quiz-options"><div class="quiz-option" data-answer="a"><span class="option-marker">A</span><span>Voor runtime snelheid</span></div>
+<div class="quiz-option" data-answer="b"><span class="option-marker">B</span><span>Voor duidelijkheid en tooling</span></div>
+<div class="quiz-option" data-answer="c"><span class="option-marker">C</span><span>Ze vervangen tests</span></div></div>
+<button class="check-answer-btn">Controleer antwoord</button>
+<div class="quiz-feedback">Type hints helpen leesbaarheid en tooling.</div>
+</div>
+<div class="quiz-question" data-correct="b">
+<p class="question-text">7. Wat gebeurt er bij shallow copy van een geneste lijst?</p>
+<div class="quiz-options"><div class="quiz-option" data-answer="a"><span class="option-marker">A</span><span>Alles volledig gekopieerd</span></div>
+<div class="quiz-option" data-answer="b"><span class="option-marker">B</span><span>Binnenlijsten gedeeld</span></div>
+<div class="quiz-option" data-answer="c"><span class="option-marker">C</span><span>Niets gekopieerd</span></div></div>
+<button class="check-answer-btn">Controleer antwoord</button>
+<div class="quiz-feedback">Binnenliggende objecten blijven gedeeld.</div>
+</div>
+<div class="quiz-question" data-correct="b">
+<p class="question-text">8. Welke except vangt alle standaard exceptions?</p>
+<div class="quiz-options"><div class="quiz-option" data-answer="a"><span class="option-marker">A</span><span>except All</span></div>
+<div class="quiz-option" data-answer="b"><span class="option-marker">B</span><span>except Exception</span></div>
+<div class="quiz-option" data-answer="c"><span class="option-marker">C</span><span>except Any</span></div></div>
+<button class="check-answer-btn">Controleer antwoord</button>
+<div class="quiz-feedback">Exception is de algemene standaardklasse.</div>
+</div>
+<div class="quiz-question" data-correct="b">
+<p class="question-text">9. Welke OOP-relatie betekent “is-a”?</p>
+<div class="quiz-options"><div class="quiz-option" data-answer="a"><span class="option-marker">A</span><span>Compositie</span></div>
+<div class="quiz-option" data-answer="b"><span class="option-marker">B</span><span>Overerving</span></div>
+<div class="quiz-option" data-answer="c"><span class="option-marker">C</span><span>Aggregatie</span></div></div>
+<button class="check-answer-btn">Controleer antwoord</button>
+<div class="quiz-feedback">Overerving geeft een is-a relatie.</div>
+</div>
+<div class="quiz-question" data-correct="b">
+<p class="question-text">10. Wat is het doel van unit tests?</p>
+<div class="quiz-options"><div class="quiz-option" data-answer="a"><span class="option-marker">A</span><span>Code formatteren</span></div>
+<div class="quiz-option" data-answer="b"><span class="option-marker">B</span><span>Kleine onderdelen automatisch valideren</span></div>
+<div class="quiz-option" data-answer="c"><span class="option-marker">C</span><span>Imports versnellen</span></div></div>
+<button class="check-answer-btn">Controleer antwoord</button>
+<div class="quiz-feedback">Unit tests testen kleine stukjes gedrag.</div>
+</div></div>
+<div class="quiz-mode-panel" data-mode="hard"><h3>Moeilijk (10 vragen)</h3><div class="quiz-question" data-correct="c">
+<p class="question-text">1. Welke complexiteit heeft lineair zoeken in een linked list?</p>
+<div class="quiz-options"><div class="quiz-option" data-answer="a"><span class="option-marker">A</span><span>O(1)</span></div>
+<div class="quiz-option" data-answer="b"><span class="option-marker">B</span><span>O(log n)</span></div>
+<div class="quiz-option" data-answer="c"><span class="option-marker">C</span><span>O(n)</span></div></div>
+<button class="check-answer-btn">Controleer antwoord</button>
+<div class="quiz-feedback">Je moet mogelijk alle nodes doorlopen.</div>
+</div>
+<div class="quiz-question" data-correct="a">
+<p class="question-text">2. Wat is een voordeel van abstracte basisklassen?</p>
+<div class="quiz-options"><div class="quiz-option" data-answer="a"><span class="option-marker">A</span><span>Dwingen van methode-contracten</span></div>
+<div class="quiz-option" data-answer="b"><span class="option-marker">B</span><span>Sneller geheugen</span></div>
+<div class="quiz-option" data-answer="c"><span class="option-marker">C</span><span>Geen constructor nodig</span></div></div>
+<button class="check-answer-btn">Controleer antwoord</button>
+<div class="quiz-feedback">ABC's definiëren verplichte interface.</div>
+</div>
+<div class="quiz-question" data-correct="a">
+<p class="question-text">3. Wanneer is compositie beter dan overerving?</p>
+<div class="quiz-options"><div class="quiz-option" data-answer="a"><span class="option-marker">A</span><span>Wanneer gedrag combineerbaar moet zijn</span></div>
+<div class="quiz-option" data-answer="b"><span class="option-marker">B</span><span>Nooit</span></div>
+<div class="quiz-option" data-answer="c"><span class="option-marker">C</span><span>Alleen bij kleine classes</span></div></div>
+<button class="check-answer-btn">Controleer antwoord</button>
+<div class="quiz-feedback">Compositie geeft flexibiliteit zonder strakke hiërarchie.</div>
+</div>
+<div class="quiz-question" data-correct="b">
+<p class="question-text">4. Wat doet @property?</p>
+<div class="quiz-options"><div class="quiz-option" data-answer="a"><span class="option-marker">A</span><span>Maakt methoden private</span></div>
+<div class="quiz-option" data-answer="b"><span class="option-marker">B</span><span>Laat methodes als attribuut gebruiken</span></div>
+<div class="quiz-option" data-answer="c"><span class="option-marker">C</span><span>Verwijdert setters</span></div></div>
+<button class="check-answer-btn">Controleer antwoord</button>
+<div class="quiz-feedback">@property maakt nette getter-syntax.</div>
+</div>
+<div class="quiz-question" data-correct="b">
+<p class="question-text">5. Welke datastructuur past bij BFS?</p>
+<div class="quiz-options"><div class="quiz-option" data-answer="a"><span class="option-marker">A</span><span>Stack</span></div>
+<div class="quiz-option" data-answer="b"><span class="option-marker">B</span><span>Queue</span></div>
+<div class="quiz-option" data-answer="c"><span class="option-marker">C</span><span>Set</span></div></div>
+<button class="check-answer-btn">Controleer antwoord</button>
+<div class="quiz-feedback">BFS gebruikt een queue.</div>
+</div>
+<div class="quiz-question" data-correct="b">
+<p class="question-text">6. Wat is duck typing?</p>
+<div class="quiz-options"><div class="quiz-option" data-answer="a"><span class="option-marker">A</span><span>Type moet exact kloppen</span></div>
+<div class="quiz-option" data-answer="b"><span class="option-marker">B</span><span>Gedrag belangrijker dan type</span></div>
+<div class="quiz-option" data-answer="c"><span class="option-marker">C</span><span>Alleen voor dataclasses</span></div></div>
+<button class="check-answer-btn">Controleer antwoord</button>
+<div class="quiz-feedback">Als het zich gedraagt als het type, werkt het.</div>
+</div>
+<div class="quiz-question" data-correct="b">
+<p class="question-text">7. Waarom dependency injectie?</p>
+<div class="quiz-options"><div class="quiz-option" data-answer="a"><span class="option-marker">A</span><span>Sterkere koppeling</span></div>
+<div class="quiz-option" data-answer="b"><span class="option-marker">B</span><span>Losse koppeling en testbaarheid</span></div>
+<div class="quiz-option" data-answer="c"><span class="option-marker">C</span><span>Minder classes</span></div></div>
+<button class="check-answer-btn">Controleer antwoord</button>
+<div class="quiz-feedback">DI maakt componenten makkelijker te testen.</div>
+</div>
+<div class="quiz-question" data-correct="b">
+<p class="question-text">8. Wat test je in een integratietest?</p>
+<div class="quiz-options"><div class="quiz-option" data-answer="a"><span class="option-marker">A</span><span>Één functie</span></div>
+<div class="quiz-option" data-answer="b"><span class="option-marker">B</span><span>Samenwerking tussen componenten</span></div>
+<div class="quiz-option" data-answer="c"><span class="option-marker">C</span><span>Alleen style</span></div></div>
+<button class="check-answer-btn">Controleer antwoord</button>
+<div class="quiz-feedback">Integratietest kijkt naar samenspel van delen.</div>
+</div>
+<div class="quiz-question" data-correct="b">
+<p class="question-text">9. Welke structuur voorkomt dubbele items en geeft snelle membership checks?</p>
+<div class="quiz-options"><div class="quiz-option" data-answer="a"><span class="option-marker">A</span><span>list</span></div>
+<div class="quiz-option" data-answer="b"><span class="option-marker">B</span><span>set</span></div>
+<div class="quiz-option" data-answer="c"><span class="option-marker">C</span><span>tuple</span></div></div>
+<button class="check-answer-btn">Controleer antwoord</button>
+<div class="quiz-feedback">Set is ideaal voor unieke waarden en snelle checks.</div>
+</div>
+<div class="quiz-question" data-correct="b">
+<p class="question-text">10. Wat is een side effect in functies?</p>
+<div class="quiz-options"><div class="quiz-option" data-answer="a"><span class="option-marker">A</span><span>Alleen returnwaarde</span></div>
+<div class="quiz-option" data-answer="b"><span class="option-marker">B</span><span>Verandering buiten de functie</span></div>
+<div class="quiz-option" data-answer="c"><span class="option-marker">C</span><span>Syntaxfout</span></div></div>
+<button class="check-answer-btn">Controleer antwoord</button>
+<div class="quiz-feedback">Bijv. globale state aanpassen of I/O uitvoeren.</div>
+</div></div>
+</section>
 
             <nav class="lesson-nav">
                 <a href="../index.html" class="nav-btn">
