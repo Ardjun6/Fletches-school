@@ -507,6 +507,12 @@ strong { color: var(--text-primary); }
 .check-answer-btn { margin-top: var(--space-sm); padding: 0.4rem 0.9rem; background: var(--accent); border: none; border-radius: var(--radius-md); color: var(--bg-body); font-weight: 600; font-size: 0.82rem; cursor: pointer; }
 .check-answer-btn:hover { filter: brightness(1.1); }
 
+.quiz-mode-selector { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: var(--space-md); }
+.quiz-mode-btn { padding: 0.4rem 0.8rem; border-radius: var(--radius-md); border: 1px solid var(--border); background: var(--bg-raised); color: var(--text-secondary); cursor: pointer; font-weight: 600; }
+.quiz-mode-btn.active { border-color: var(--accent); background: var(--accent-surface); color: var(--accent); }
+.quiz-mode-panel { display: none; }
+.quiz-mode-panel.active { display: block; }
+
 /* ============================================
    LESSON NAV
    ============================================ */
